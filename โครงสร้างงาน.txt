@@ -1,0 +1,85 @@
+โครงสร้างงานโปรเจกต์ E-Learning (Front-end เท่านั้น)
+🛠 เทคโนโลยีที่ใช้
+-Next.js (App Router)
+-TypeScript
+-TailwindCSS
+
+โครงสร้างของโปรเจคที่ใช้ next.js
+src/
+ └── app/
+      ├── layout.tsx         # Layout หลัก
+      ├── page.tsx           # หน้า Home
+      ├── admin/
+      │    └── page.tsx      # หน้า Admin
+      ├── courses/
+      │    ├── page.tsx      # หน้า Courses (grid)
+      │    └── [id]/page.tsx # หน้า Course Detail (dynamic)
+      ├── login/
+      │    └── page.tsx      # หน้า Login
+      └── components/
+           ├── Navbar.tsx
+           ├── CourseCard.tsx
+           └── LanguageSwitch.tsx
+
+การแบ่งหน้าที่
+🌍 เอิร์ธ
+สร้างโปรเจค Next.js + Setup TailwindCSS + TypeScript
+ทำ Navbar (เมนูนำทาง เช่น Home, Courses, Admin, Login)
+ทำ หน้า Home (page.tsx)
+ทำ หน้า Admin (/admin)
+
+📚 ออม
+ทำ หน้า Courses (/courses) แสดงรายวิชาแบบ Grid
+ทำ Component CourseCard.tsx → แสดงข้อมูลสั้น ๆ ของคอร์ส (ชื่อ, ปีการศึกษา, รูป)
+ทำ หน้า Course Detail (/courses/[id]) แสดงรายละเอียดคอร์ส
+เพิ่ม ประเภทของคอร์ส ว่าเป็นวิชาของ ปี 1, ปี 2, ปี 3 (อาจจะใช้ tag หรือ category)
+
+🌐 อั้ม
+ทำ Component LanguageSwitch.tsx เป็น Slide Switch
+ด้านซ้าย → ภาษาไทย
+ด้านขวา → ภาษาอังกฤษ
+ให้ Navbar, Home, Courses, Admin, Login รองรับการแปลภาษา (mock data พอ ยังไม่ต้องทำ i18n จริงจัง)
+
+🔐 อ้อ
+ทำ หน้า Login (/login) แบบจำลอง
+มีช่อง Email / Password
+ปุ่ม Login (mock → ไม่ต้องเชื่อม backend)
+
+🖼️ ไนซ์
+หารูปภาพประกอบใส่ในแต่ละหน้า เช่น
+Banner หน้า Home
+รูป Preview คอร์ส (ใน CourseCard)
+รูปตกแต่งหน้า Login หรือ Admin
+
+# สร้าง branch สำหรับเอิร์ธ
+git checkout -b feature/earth-setup
+# เพิ่มไฟล์ทั้งหมด (Next.js + Tailwind + TS + Navbar + Home + Admin)
+git add .
+# commit งาน
+git commit -m "v1"
+# อัพโหลด branch ไปที่ GitHub
+git push origin feature/earth-setup
+
+ออม
+git checkout -b feature/aom-courses
+git add .
+git commit -m "Aom: create Courses page, CourseCard component, Course Detail, course categories"
+git push origin feature/aom-courses
+
+อั้ม
+git checkout -b feature/aum-language
+git add .
+git commit -m "Aum: add LanguageSwitch component with Thai/English support"
+git push origin feature/aum-language
+
+อ้อ
+git checkout -b feature/au-login
+git add .
+git commit -m "Au: create mock Login page"
+git push origin feature/au-login
+
+ไนซ์
+git checkout -b feature/nice-images
+git add .
+git commit -m "Nice: add images to Home, Courses, Login, and Admin pages"
+git push origin feature/nice-images
