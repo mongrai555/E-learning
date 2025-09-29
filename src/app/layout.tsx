@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DarkModeToggle from "@/components/DarkModeToggle";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,17 +39,19 @@ export default function RootLayout({
           position: 'relative'
         }}
       >
-        <Navbar />
-        <main style={{ flex: 1 }}>{children}</main>
-        <Footer />
-        <div style={{ 
-          position: 'fixed', 
-          bottom: '20px', 
-          right: '20px',
-          zIndex: 1000
-        }}>
-          <DarkModeToggle />
-        </div>
+        <LanguageProvider>
+          <Navbar />
+          <main style={{ flex: 1 }}>{children}</main>
+          <Footer />
+          <div style={{ 
+            position: 'fixed', 
+            bottom: '20px', 
+            right: '20px',
+            zIndex: 1000
+          }}>
+            <DarkModeToggle />
+          </div>
+        </LanguageProvider>
       </body>
     </html>
   );

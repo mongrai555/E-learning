@@ -2,9 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitch from "./LanguageSwitch";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <nav style={{ 
@@ -25,24 +28,27 @@ const Navbar = () => {
       }}>
         <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
           <Link href="/" style={{ color: 'white', textDecoration: 'none' }}>
-            E-learning
+            {t('nav.appName')}
           </Link>
         </div>
         
         {/* Desktop Navigation - always visible on desktop */}
-        <div style={{ display: 'flex' }} className="md-flex">
-          <Link href="/" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            หน้าหลัก
-          </Link>
-          <Link href="/courses" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            คอร์สเรียน
-          </Link>
-          <Link href="/admin" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            ผู้ดูแลระบบ
-          </Link>
-          <Link href="/login" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            เข้าสู่ระบบ
-          </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }} className="md-flex">
+          <div style={{ display: 'flex' }}>
+            <Link href="/" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
+              {t('nav.home')}
+            </Link>
+            <Link href="/courses" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
+              {t('nav.courses')}
+            </Link>
+            <Link href="/admin" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
+              {t('nav.admin')}
+            </Link>
+            <Link href="/login" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
+              {t('nav.login')}
+            </Link>
+          </div>
+          <LanguageSwitch />
         </div>
         
         {/* Mobile Menu Button - only visible on mobile */}
@@ -80,7 +86,7 @@ const Navbar = () => {
             }}
             onClick={() => setIsMenuOpen(false)}
           >
-            หน้าหลัก
+            {t('nav.home')}
           </Link>
           <Link 
             href="/courses" 
@@ -93,7 +99,7 @@ const Navbar = () => {
             }}
             onClick={() => setIsMenuOpen(false)}
           >
-            คอร์สเรียน
+            {t('nav.courses')}
           </Link>
           <Link 
             href="/admin" 
@@ -106,7 +112,7 @@ const Navbar = () => {
             }}
             onClick={() => setIsMenuOpen(false)}
           >
-            ผู้ดูแลระบบ
+            {t('nav.admin')}
           </Link>
           <Link 
             href="/login" 
@@ -119,8 +125,11 @@ const Navbar = () => {
             }}
             onClick={() => setIsMenuOpen(false)}
           >
-            เข้าสู่ระบบ
+            {t('nav.login')}
           </Link>
+          <div style={{ padding: '0.5rem 0' }}>
+            <LanguageSwitch />
+          </div>
         </div>
       )}
     </nav>
