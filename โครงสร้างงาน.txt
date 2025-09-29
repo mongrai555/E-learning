@@ -23,7 +23,7 @@ src/
 
 การแบ่งหน้าที่
 🌍 เอิร์ธ
-สร้างโปรเจค Next.js + Setup TailwindCSS + TypeScript
+สร้างโปรเจค Next.js + Setup CSS + TypeScript
 ทำ Navbar (เมนูนำทาง เช่น Home, Courses, Admin, Login)
 ทำ หน้า Home (page.tsx)
 ทำ หน้า Admin (/admin)

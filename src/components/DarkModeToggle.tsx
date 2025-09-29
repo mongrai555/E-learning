@@ -8,12 +8,12 @@ const DarkModeToggle = () => {
   useEffect(() => {
     // Check for saved theme preference or default to light mode
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    if (savedTheme === 'dark') {
       setIsDarkMode(true);
       document.documentElement.setAttribute('data-theme', 'dark');
     } else {
+      setIsDarkMode(false);
       document.documentElement.setAttribute('data-theme', 'light');
     }
   }, []);
