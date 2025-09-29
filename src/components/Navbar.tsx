@@ -1,10 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Check login status on component mount
+  useEffect(() => {
+    // Mock authentication status using localStorage
+    const loginStatus = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loginStatus);
+  }, []);
+
+  const handleLogout = () => {
+    // Mock logout - just clear the login status
+    localStorage.setItem("isLoggedIn", "false");
+    setIsLoggedIn(false);
+    
+    // Redirect to home page if not already there
+    if (pathname !== "/") {
+      router.push("/");
+    }
+  };
 
   return (
     <nav style={{ 
@@ -40,9 +62,27 @@ const Navbar = () => {
           <Link href="/admin" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
             ผู้ดูแลระบบ
           </Link>
-          <Link href="/login" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            เข้าสู่ระบบ
-          </Link>
+          {isLoggedIn ? (
+            <button 
+              onClick={handleLogout}
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: '#bfdbfe', 
+                margin: '0 1rem', 
+                fontWeight: '500',
+                cursor: 'pointer',
+                fontSize: 'inherit',
+                fontFamily: 'inherit'
+              }}
+            >
+              ออกจากระบบ
+            </button>
+          ) : (
+            <Link href="/login" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
+              เข้าสู่ระบบ
+            </Link>
+          )}
         </div>
         
         {/* Mobile Menu Button - only visible on mobile */}
@@ -108,19 +148,44 @@ const Navbar = () => {
           >
             ผู้ดูแลระบบ
           </Link>
-          <Link 
-            href="/login" 
-            style={{ 
-              display: 'block', 
-              color: 'white', 
-              textDecoration: 'none', 
-              padding: '0.5rem 0',
-              fontWeight: '500'
-            }}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            เข้าสู่ระบบ
-          </Link>
+          {isLoggedIn ? (
+            <button 
+              onClick={() => {
+                handleLogout();
+                setIsMenuOpen(false);
+              }}
+              style={{ 
+                display: 'block', 
+                background: 'none', 
+                border: 'none', 
+                color: 'white', 
+                textDecoration: 'none', 
+                padding: '0.5rem 0',
+                fontWeight: '500',
+                cursor: 'pointer',
+                width: '100%',
+                textAlign: 'left',
+                fontSize: 'inherit',
+                fontFamily: 'inherit'
+              }}
+            >
+              ออกจากระบบ
+            </button>
+          ) : (
+            <Link 
+              href="/login" 
+              style={{ 
+                display: 'block', 
+                color: 'white', 
+                textDecoration: 'none', 
+                padding: '0.5rem 0',
+                fontWeight: '500'
+              }}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              เข้าสู่ระบบ
+            </Link>
+          )}
         </div>
       )}
     </nav>
