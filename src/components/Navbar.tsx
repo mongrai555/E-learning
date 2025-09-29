@@ -37,6 +37,9 @@ const Navbar = () => {
           <Link href="/courses" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
             คอร์สเรียน
           </Link>
+          <Link href="/developer" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
+            ทีมงาน
+          </Link>
           <Link href="/admin" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
             ผู้ดูแลระบบ
           </Link>
@@ -94,6 +97,19 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             คอร์สเรียน
+          </Link>
+          <Link 
+            href="/developer" 
+            style={{ 
+              display: 'block', 
+              color: 'white', 
+              textDecoration: 'none', 
+              padding: '0.5rem 0',
+              fontWeight: '500'
+            }}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            ทีมงาน
           </Link>
           <Link 
             href="/admin" 

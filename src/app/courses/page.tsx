@@ -1,7 +1,9 @@
 'use client';
+'use client';
 
 import { useState } from 'react';
 import CourseCard from '@/components/CourseCard';
+import DarkModeToggle from '@/components/DarkModeToggle';
 import { curriculum, CourseContent } from '@/data/curriculum';
 
 export default function CoursesPage() {
@@ -32,8 +34,11 @@ export default function CoursesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="courses-container">
+      {/* Dark Mode Toggle */}
+      <DarkModeToggle />
+
+      <div className="courses-wrapper">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -46,16 +51,16 @@ export default function CoursesPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <div className="card p-6 mb-8">
           <div className="flex flex-wrap gap-4">
-            <div className="flex-1 min-w-[200px]">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <div className="flex-1 min-w-200">
+              <label className="form-label">
                 🎓 เลือกปีการศึกษา
               </label>
               <select
                 value={selectedYear || ''}
                 onChange={(e) => setSelectedYear(e.target.value ? Number(e.target.value) : null)}
-                className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+                className="form-select"
               >
                 <option value="">ทุกปี</option>
                 <option value="1">ปี 1</option>
@@ -63,14 +68,14 @@ export default function CoursesPage() {
               </select>
             </div>
             
-            <div className="flex-1 min-w-[200px]">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <div className="flex-1 min-w-200">
+              <label className="form-label">
                 📅 เลือกเทอม
               </label>
               <select
                 value={selectedSemester || ''}
                 onChange={(e) => setSelectedSemester(e.target.value ? Number(e.target.value) : null)}
-                className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+                className="form-select"
               >
                 <option value="">ทุกเทอม</option>
                 <option value="1">เทอม 1</option>
@@ -78,14 +83,14 @@ export default function CoursesPage() {
               </select>
             </div>
 
-            <div className="flex-1 min-w-[200px]">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <div className="flex-1 min-w-200">
+              <label className="form-label">
                 ⚡ ระดับความยาก
               </label>
               <select
                 value={selectedDifficulty || ''}
                 onChange={(e) => setSelectedDifficulty(e.target.value || null)}
-                className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+                className="form-select"
               >
                 <option value="">ทุกระดับ</option>
                 <option value="beginner">เริ่มต้น</option>
@@ -98,7 +103,7 @@ export default function CoursesPage() {
               <div className="flex items-end">
                 <button
                   onClick={clearFilters}
-                  className="px-6 py-2 text-sm text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium"
+                  className="btn-filter"
                 >
                   🗑️ ล้างตัวกรอง
                 </button>
@@ -108,33 +113,26 @@ export default function CoursesPage() {
         </div>
 
         {/* Course Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div className="text-3xl font-bold text-indigo-600 mb-2">
+        <div className="grid-1 md-grid-4 gap-4 mb-8">
+          <div className="stat-card">
+            <div className="stat-number text-indigo-600">
               {filteredCourses.length}
             </div>
-            <div className="text-sm text-gray-600">วิชาทั้งหมด</div>
+            <div className="stat-label">วิชาทั้งหมด</div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">
-              {filteredCourses.reduce((sum, course) => sum + (course.credits || 0), 0)}
-            </div>
-            <div className="text-sm text-gray-600">หน่วยกิตรวม</div>
-          </div>
-          
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">
+          <div className="stat-card">
+            <div className="stat-number text-blue-600">
               {filteredCourses.filter(c => c.difficulty === 'beginner').length}
             </div>
-            <div className="text-sm text-gray-600">วิชาระดับเริ่มต้น</div>
+            <div className="stat-label">วิชาระดับเริ่มต้น</div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div className="text-3xl font-bold text-purple-600 mb-2">
+          <div className="stat-card">
+            <div className="stat-number text-purple-600">
               {[...new Set(filteredCourses.flatMap(c => c.tools.map(t => t.name)))].length}
             </div>
-            <div className="text-sm text-gray-600">เครื่องมือที่ใช้</div>
+            <div className="stat-label">เครื่องมือที่ใช้</div>
           </div>
         </div>
 
@@ -145,18 +143,18 @@ export default function CoursesPage() {
             .map(([groupTitle, courses]) => (
               <div key={groupTitle}>
                 <div className="flex items-center mb-8">
-                  <div className="flex-grow">
+                  <div className="flex-1">
                     <h2 className="text-2xl font-bold text-gray-800 mb-2">
                       {groupTitle}
                     </h2>
-                    <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded"></div>
+                    <div className="section-divider"></div>
                   </div>
                   <div className="text-sm text-gray-500">
                     {courses.length} วิชา
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid-1 md-grid-2 lg-grid-3 xl-grid-4 gap-6">
                   {courses.map((course) => (
                     <CourseCard key={course.id} course={course} />
                   ))}
@@ -177,7 +175,7 @@ export default function CoursesPage() {
             </p>
             <button
               onClick={clearFilters}
-              className="px-6 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors duration-200"
+              className="btn-primary"
             >
               ล้างตัวกรองทั้งหมด
             </button>

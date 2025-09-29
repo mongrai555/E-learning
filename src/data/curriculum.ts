@@ -48,12 +48,10 @@ export const curriculum: CourseContent[] = [
       'การจัดการข้อผิดพลาด'
     ],
     tools: [
-      { name: 'Python', type: 'language', description: 'ภาษาโปรแกรมมิ่งสำหรับผู้เริ่มต้น' },
-      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ด' },
-      { name: 'Git', type: 'tool', description: 'ระบบควบคุมเวอร์ชั่น' }
+      { name: 'Google Colab', type: 'platform', description: 'แพลตฟอร์มออนไลน์สำหรับการเขียนและรันโค้ด Python ฟรี' }
     ],
     credits: 3,
-    duration: '15 สัปดาห์',
+    duration: '15',
     difficulty: 'beginner',
     image: '/images/programming-fundamentals.jpg'
   },
@@ -83,7 +81,7 @@ export const curriculum: CourseContent[] = [
       { name: 'Web Browser', type: 'tool', description: 'เว็บเบราว์เซอร์' }
     ],
     credits: 3,
-    duration: '15 สัปดาห์',
+    duration: '15',
     difficulty: 'beginner',
     image: '/images/ict.jpg'
   },
@@ -110,12 +108,11 @@ export const curriculum: CourseContent[] = [
       'สถาปัตยกรรมคอมพิวเตอร์'
     ],
     tools: [
-      { name: 'Assembly Language', type: 'language', description: 'ภาษาแอสเซมบลี' },
-      { name: 'CPU Simulator', type: 'tool', description: 'โปรแกรมจำลอง CPU' },
-      { name: 'Logisim', type: 'tool', description: 'โปรแกรมออกแบบวงจรตรรกะ' }
+      { name: 'Tinkercad', type: 'tool', description: 'แพลตฟอร์มออนไลน์สำหรับการออกแบบวงจรและจำลอง' },
+      { name: 'Arduino IDE', type: 'tool', description: 'สภาพแวดล้อมการพัฒนาสำหรับการเขียนโปรแกรม Arduino' }
     ],
     credits: 3,
-    duration: '15 สัปดาห์',
+    duration: '15',
     difficulty: 'intermediate',
     prerequisites: ['เทคโนโลยีสารสนเทศและการสื่อสาร'],
     image: '/images/computer-architecture.jpg'
@@ -141,12 +138,10 @@ export const curriculum: CourseContent[] = [
       'การแก้ไขปัญหาเครือข่าย'
     ],
     tools: [
-      { name: 'Wireshark', type: 'tool', description: 'โปรแกรมวิเคราะห์เครือข่าย' },
-      { name: 'Cisco Packet Tracer', type: 'tool', description: 'โปรแกรมจำลองเครือข่าย' },
-      { name: 'Command Line Tools', type: 'tool', description: 'เครื่องมือ command line' }
+      { name: 'Cisco Packet Tracer', type: 'tool', description: 'โปรแกรมจำลองเครือข่ายของ Cisco' }
     ],
     credits: 3,
-    duration: '15 สัปดาห์',
+    duration: '15',
     difficulty: 'intermediate',
     image: '/images/computer-network.jpg'
   },
@@ -171,12 +166,11 @@ export const curriculum: CourseContent[] = [
       'Debugging Techniques'
     ],
     tools: [
-      { name: 'Python', type: 'language', description: 'ภาษาโปรแกรมมิ่ง' },
-      { name: 'Java', type: 'language', description: 'ภาษาโปรแกรมมิ่ง' },
-      { name: 'IDE', type: 'tool', description: 'สภาพแวดล้อมการพัฒนา' }
+      { name: 'Google Colab', type: 'platform', description: 'แพลตฟอร์มออนไลน์สำหรับการเขียนและรันโค้ด Python' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย' }
     ],
     credits: 3,
-    duration: '15 สัปดาห์',
+    duration: '15',
     difficulty: 'intermediate',
     prerequisites: ['การเขียนโปรแกรมเบื้องต้น'],
     image: '/images/problem-solving.jpg'
@@ -210,7 +204,7 @@ export const curriculum: CourseContent[] = [
       { name: 'Algorithm Visualizer', type: 'tool', description: 'เครื่องมือแสดงผลอัลกอริทึม' }
     ],
     credits: 3,
-    duration: '15 สัปดาห์',
+    duration: '15',
     difficulty: 'intermediate',
     prerequisites: ['การเขียนโปรแกรมและทักษะการแก้ปัญหา'],
     image: '/images/data-structure.jpg'
@@ -242,81 +236,343 @@ export const curriculum: CourseContent[] = [
       { name: 'phpMyAdmin', type: 'tool', description: 'เครื่องมือจัดการฐานข้อมูลผ่านเว็บ' }
     ],
     credits: 3,
-    duration: '15 สัปดาห์',
+    duration: '15',
     difficulty: 'intermediate',
     image: '/images/database.jpg'
   },
+  // คอร์สย่อยของวิศวกรรมซอฟต์แวร์
   {
-    id: 'software-eng',
-    title: 'วิศวกรรมซอฟต์แวร์',
-    titleEn: 'Software Engineering',
+    id: 'github-course',
+    title: 'GitHub และการควบคุมเวอร์ชั่น',
+    titleEn: 'GitHub and Version Control',
     year: 2,
     semester: 1,
-    description: 'หลักการและกระบวนการพัฒนาซอฟต์แวร์',
-    fullDescription: 'ศึกษาหลักการและกระบวนการพัฒนาซอฟต์แวร์ตั้งแต่การวิเคราะห์ความต้องการจนถึงการทดสอบ',
+    description: 'เรียนรู้การใช้งาน GitHub สำหรับการควบคุมเวอร์ชั่นและการทำงานร่วมกัน',
+    fullDescription: 'ศึกษาการใช้งาน Git และ GitHub สำหรับการควบคุมเวอร์ชั่น การทำงานเป็นทีม และการจัดการโปรเจกต์ซอฟต์แวร์',
     objectives: [
-      'เข้าใจกระบวนการพัฒนาซอฟต์แวร์',
-      'ประยุกต์ใช้หลักการวิศวกรรมซอฟต์แวร์',
-      'ทำงานเป็นทีมในการพัฒนาซอฟต์แวร์'
+      'เข้าใจหลักการของ Version Control',
+      'ใช้งาน Git และ GitHub ได้อย่างมีประสิทธิภาพ',
+      'ทำงานร่วมกันในทีมผ่าน GitHub'
     ],
     topics: [
-      'Software Development Life Cycle',
-      'Requirements Analysis',
-      'Software Design',
-      'Testing และ Quality Assurance',
-      'Project Management',
-      'Version Control'
+      'Git Fundamentals',
+      'GitHub Repository Management',
+      'Branching และ Merging',
+      'Pull Requests และ Code Review',
+      'Collaboration Workflows',
+      'GitHub Actions และ CI/CD'
     ],
     tools: [
       { name: 'GitHub', type: 'platform', description: 'แพลตฟอร์มควบคุมเวอร์ชั่นและ collaboration' },
-      { name: 'Docker', type: 'tool', description: 'เครื่องมือ containerization' },
-      { name: 'Playwright', type: 'tool', description: 'เครื่องมือทดสอบอัตโนมัติ' },
-      { name: 'Postman', type: 'tool', description: 'เครื่องมือทดสอบ API' }
+      { name: 'Git', type: 'tool', description: 'ระบบควบคุมเวอร์ชั่น' }
     ],
-    credits: 3,
-    duration: '15 สัปดาห์',
-    difficulty: 'intermediate',
-    image: '/images/software-engineering.jpg'
+    credits: 1,
+    duration: '4',
+    difficulty: 'beginner',
+    image: '/images/github.jpg'
   },
   {
-    id: 'web-tech',
-    title: 'เว็บเทคโนโลยี',
-    titleEn: 'Web Technology',
+    id: 'docker-course',
+    title: 'Docker และ Containerization',
+    titleEn: 'Docker and Containerization',
     year: 2,
     semester: 1,
-    description: 'การพัฒนาเว็บแอปพลิเคชันและเทคโนโลยีที่เกี่ยวข้อง',
-    fullDescription: 'ศึกษาการพัฒนาเว็บไซต์และเว็บแอปพลิเคชัน รวมถึงเทคโนโลยีฝั่งไคลเอนต์และเซิร์ฟเวอร์',
+    description: 'เรียนรู้การใช้งาน Docker สำหรับการสร้างและจัดการ Container',
+    fullDescription: 'ศึกษาหลักการของ Containerization การใช้งาน Docker และการ Deploy แอปพลิเคชันด้วย Container',
     objectives: [
-      'พัฒนาเว็บไซต์ได้',
-      'เข้าใจเทคโนโลยีเว็บสมัยใหม่',
-      'สร้างเว็บแอปพลิเคชันแบบ responsive'
+      'เข้าใจหลักการของ Containerization',
+      'สร้างและจัดการ Docker Container ได้',
+      'Deploy แอปพลิเคชันด้วย Docker'
     ],
     topics: [
-      'HTML5 และ Semantic Web',
-      'CSS3 และ Responsive Design',
-      'JavaScript และ ES6+',
-      'Frontend Frameworks',
-      'Backend Development',
-      'Web APIs และ REST',
-      'Database Integration',
-      'Deployment และ Hosting'
+      'Container Fundamentals',
+      'Docker Images และ Containers',
+      'Dockerfile และ Build Process',
+      'Docker Compose',
+      'Container Orchestration',
+      'Docker Registry และ Distribution'
     ],
     tools: [
-      { name: 'Figma', type: 'design', description: 'เครื่องมือออกแบบ UI/UX' },
-      { name: 'HTML', type: 'language', description: 'ภาษามาร์กอัปสำหรับเว็บ' },
-      { name: 'CSS', type: 'language', description: 'ภาษาจัดรูปแบบ' },
-      { name: 'Tailwind CSS', type: 'framework', description: 'CSS framework สำหรับ utility-first' },
-      { name: 'JavaScript', type: 'language', description: 'ภาษาโปรแกรมมิ่งสำหรับเว็บ' },
-      { name: 'React', type: 'framework', description: 'JavaScript library สำหรับ UI' },
-      { name: 'Next.js', type: 'framework', description: 'React framework สำหรับ production' },
-      { name: 'Vercel', type: 'platform', description: 'แพลตฟอร์ม deployment สำหรับเว็บ' }
+      { name: 'Docker', type: 'tool', description: 'เครื่องมือ containerization' },
+      { name: 'Docker Compose', type: 'tool', description: 'เครื่องมือจัดการ multi-container' }
     ],
-    credits: 3,
-    duration: '15 สัปดาห์',
+    credits: 1,
+    duration: '4',
+    difficulty: 'intermediate',
+    image: '/images/docker.jpg'
+  },
+  {
+    id: 'playwright-course',
+    title: 'Playwright และการทดสอบอัตโนมัติ',
+    titleEn: 'Playwright and Automated Testing',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้การใช้งาน Playwright สำหรับการทดสอบเว็บแอปพลิเคชันอัตโนมัติ',
+    fullDescription: 'ศึกษาการทดสอบแอปพลิเคชันอัตโนมัติด้วย Playwright รวมถึงการเขียน Test Script และการ CI/CD Integration',
+    objectives: [
+      'เข้าใจหลักการของ Automated Testing',
+      'เขียน Test Script ด้วย Playwright ได้',
+      'ผสานการทดสอบเข้ากับ CI/CD Pipeline'
+    ],
+    topics: [
+      'Automated Testing Fundamentals',
+      'Playwright Framework',
+      'Test Script Development',
+      'Cross-browser Testing',
+      'Test Reporting และ Analysis',
+      'CI/CD Integration'
+    ],
+    tools: [
+      { name: 'Playwright', type: 'tool', description: 'เครื่องมือทดสอบอัตโนมัติ' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'IDE สำหรับการเขียน Test Script' }
+    ],
+    credits: 1,
+    duration: '4',
+    difficulty: 'intermediate',
+    image: '/images/playwright.jpg'
+  },
+  {
+    id: 'postman-course',
+    title: 'Postman และการทดสอบ API',
+    titleEn: 'Postman and API Testing',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้การใช้งาน Postman สำหรับการทดสอบและพัฒนา API',
+    fullDescription: 'ศึกษาการใช้งาน Postman สำหรับการทดสอบ API การสร้าง Test Collection และการทำ API Documentation',
+    objectives: [
+      'เข้าใจหลักการของ API Testing',
+      'ใช้งาน Postman ในการทดสอบ API ได้',
+      'สร้าง API Documentation และ Test Collection'
+    ],
+    topics: [
+      'API Testing Fundamentals',
+      'Postman Interface และ Features',
+      'Request และ Response Handling',
+      'Test Automation ใน Postman',
+      'API Documentation',
+      'Team Collaboration ใน Postman'
+    ],
+    tools: [
+      { name: 'Postman', type: 'tool', description: 'เครื่องมือทดสอบ API' },
+      { name: 'Newman', type: 'tool', description: 'Command-line runner สำหรับ Postman' }
+    ],
+    credits: 1,
+    duration: '4',
+    difficulty: 'beginner',
+    image: '/images/postman.jpg'
+  },
+
+  // คอร์สย่อยของเว็บเทคโนโลยี
+  {
+    id: 'figma-course',
+    title: 'Figma และการออกแบบ UI/UX',
+    titleEn: 'Figma and UI/UX Design',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้การออกแบบ User Interface และ User Experience ด้วย Figma',
+    fullDescription: 'ศึกษาการใช้งาน Figma สำหรับการออกแบบ UI/UX การสร้าง Prototype และการทำงานร่วมกันในทีมดีไซน์',
+    objectives: [
+      'เข้าใจหลักการออกแบบ UI/UX',
+      'ใช้งาน Figma ในการออกแบบได้อย่างมีประสิทธิภาพ',
+      'สร้าง Prototype และ Wireframe ได้'
+    ],
+    topics: [
+      'UI/UX Design Fundamentals',
+      'Figma Interface และ Tools',
+      'Design Systems และ Components',
+      'Prototyping และ Animation',
+      'Collaboration และ Handoff',
+      'Mobile และ Web Design Patterns'
+    ],
+    tools: [
+      { name: 'Figma', type: 'design', description: 'เครื่องมือออกแบบ UI/UX' }
+    ],
+    credits: 1,
+    duration: '4',
+    difficulty: 'beginner',
+    image: '/images/figma.jpg'
+  },
+  {
+    id: 'html-css-course',
+    title: 'HTML5 และ CSS3',
+    titleEn: 'HTML5 and CSS3',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้พื้นฐานการสร้างเว็บไซต์ด้วย HTML5 และการจัดรูปแบบด้วย CSS3',
+    fullDescription: 'ศึกษาการใช้งาน HTML5 สำหรับการสร้างโครงสร้างเว็บไซต์ และ CSS3 สำหรับการจัดรูปแบบและ Responsive Design',
+    objectives: [
+      'เข้าใจโครงสร้าง HTML5 และ Semantic Elements',
+      'ใช้ CSS3 ในการจัดรูปแบบและ Layout ได้',
+      'สร้างเว็บไซต์ที่ Responsive ได้'
+    ],
+    topics: [
+      'HTML5 Semantic Elements',
+      'CSS3 Selectors และ Properties',
+      'Flexbox และ Grid Layout',
+      'Responsive Design',
+      'CSS Animations และ Transitions',
+      'Modern CSS Techniques'
+    ],
+    tools: [
+      { name: 'HTML', type: 'language', description: 'ภาษามาร์กอัปสำหรับเว็บ' },
+      { name: 'CSS', type: 'language', description: 'ภาษาจัดรูปแบบ' }
+    ],
+    credits: 1,
+    duration: '4',
+    difficulty: 'beginner',
+    image: '/images/html-css.jpg'
+  },
+  {
+    id: 'tailwind-course',
+    title: 'Tailwind CSS Framework',
+    titleEn: 'Tailwind CSS Framework',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้การใช้งาน Tailwind CSS สำหรับการพัฒนาเว็บไซต์แบบ Utility-First',
+    fullDescription: 'ศึกษาการใช้งาน Tailwind CSS Framework สำหรับการสร้าง UI ที่สวยงามและ Responsive อย่างรวดเร็ว',
+    objectives: [
+      'เข้าใจแนวคิด Utility-First CSS',
+      'ใช้งาน Tailwind CSS Classes ได้อย่างคล่องแคล่ว',
+      'ปรับแต่งและขยาย Tailwind Configuration ได้'
+    ],
+    topics: [
+      'Utility-First CSS Concepts',
+      'Tailwind CSS Classes และ Components',
+      'Responsive Design กับ Tailwind',
+      'Customization และ Configuration',
+      'Dark Mode และ Themes',
+      'Performance Optimization'
+    ],
+    tools: [
+      { name: 'Tailwind CSS', type: 'framework', description: 'CSS framework สำหรับ utility-first' }
+    ],
+    credits: 1,
+    duration: '4',
+    difficulty: 'intermediate',
+    prerequisites: ['HTML5 และ CSS3'],
+    image: '/images/tailwind.jpg'
+  },
+  {
+    id: 'javascript-course',
+    title: 'JavaScript',
+    titleEn: 'JavaScript',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้ภาษา JavaScript และฟีเจอร์ใหม่ในรุ่น ES6 และใหม่กว่า',
+    fullDescription: 'ศึกษาการเขียนโปรแกรมด้วย JavaScript รวมถึงฟีเจอร์สมัยใหม่ของ ES6+ สำหรับการพัฒนาเว็บแอปพลิเคชัน',
+    objectives: [
+      'เข้าใจ JavaScript Fundamentals',
+      'ใช้งานฟีเจอร์ ES6+ ได้อย่างมีประสิทธิภาพ',
+      'เขียน JavaScript สำหรับการพัฒนาเว็บได้'
+    ],
+    topics: [
+      'JavaScript Fundamentals',
+      'ES6+ Features (Arrow Functions, Destructuring, etc.)',
+      'DOM Manipulation',
+      'Asynchronous JavaScript (Promises, Async/Await)',
+      'Modules และ Import/Export',
+      'Modern JavaScript Development'
+    ],
+    tools: [
+      { name: 'JavaScript', type: 'language', description: 'ภาษาโปรแกรมมิ่งสำหรับเว็บ' }
+    ],
+    credits: 1,
+    duration: '4',
     difficulty: 'intermediate',
     prerequisites: ['การเขียนโปรแกรมและทักษะการแก้ปัญหา'],
-    image: '/images/web-technology.jpg'
-  }
+    image: '/images/javascript.jpg'
+  },
+  {
+    id: 'react-course',
+    title: 'React และการพัฒนา Frontend',
+    titleEn: 'React and Frontend Development',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้การพัฒนา User Interface ด้วย React Library',
+    fullDescription: 'ศึกษาการใช้งาน React สำหรับการสร้าง Interactive UI และการจัดการ State ในแอปพลิเคชัน',
+    objectives: [
+      'เข้าใจหลักการของ React และ Component-based Architecture',
+      'สร้าง React Components และจัดการ State ได้',
+      'ใช้งาน React Hooks และ Context API ได้'
+    ],
+    topics: [
+      'React Fundamentals และ JSX',
+      'Components และ Props',
+      'State Management และ React Hooks',
+      'Event Handling และ Forms',
+      'React Router สำหรับ Navigation',
+      'Performance Optimization'
+    ],
+    tools: [
+      { name: 'React', type: 'framework', description: 'JavaScript library สำหรับ UI' }
+    ],
+    credits: 1,
+    duration: '4',
+    difficulty: 'intermediate',
+    prerequisites: ['JavaScript และ ES6+'],
+    image: '/images/react.jpg'
+  },
+  {
+    id: 'nextjs-course',
+    title: 'Next.js และ Full-Stack Development',
+    titleEn: 'Next.js and Full-Stack Development',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้การพัฒนาเว็บแอปพลิเคชันแบบ Full-Stack ด้วย Next.js',
+    fullDescription: 'ศึกษาการใช้งาน Next.js Framework สำหรับการสร้างเว็บแอปพลิเคชันที่มีประสิทธิภาพสูงและ SEO-friendly',
+    objectives: [
+      'เข้าใจหลักการของ Next.js และ Server-Side Rendering',
+      'สร้าง Full-Stack Application ด้วย Next.js ได้',
+      'Deploy แอปพลิเคชันไปยัง Production ได้'
+    ],
+    topics: [
+      'Next.js Fundamentals และ App Router',
+      'Server-Side Rendering (SSR) และ Static Generation (SSG)',
+      'API Routes และ Server Actions',
+      'Database Integration',
+      'Authentication และ Authorization',
+      'Performance และ SEO Optimization'
+    ],
+    tools: [
+      { name: 'Next.js', type: 'framework', description: 'React framework สำหรับ production' }
+    ],
+    credits: 1,
+    duration: '4',
+    difficulty: 'advanced',
+    prerequisites: ['React และการพัฒนา Frontend'],
+    image: '/images/nextjs.jpg'
+  },
+  {
+    id: 'vercel-deployment-course',
+    title: 'Vercel และการ Deploy เว็บแอปพลิเคชัน',
+    titleEn: 'Vercel and Web Application Deployment',
+    year: 2,
+    semester: 1,
+    description: 'เรียนรู้การ Deploy และจัดการเว็บแอปพลิเคชันด้วย Vercel Platform',
+    fullDescription: 'ศึกษาการใช้งาน Vercel สำหรับการ Deploy เว็บแอปพลิเคชัน การจัดการ Domain และการ Monitor Performance',
+    objectives: [
+      'เข้าใจกระบวนการ Deployment สมัยใหม่',
+      'Deploy เว็บแอปพลิเคชันด้วย Vercel ได้',
+      'จัดการ Domain และ Environment Variables ได้'
+    ],
+    topics: [
+      'Modern Deployment Concepts',
+      'Vercel Platform และ Features',
+      'Git Integration และ Automatic Deployment',
+      'Domain Management และ Custom Domains',
+      'Environment Variables และ Secrets',
+      'Analytics และ Performance Monitoring'
+    ],
+    tools: [
+      { name: 'Vercel', type: 'platform', description: 'แพลตฟอร์ม deployment สำหรับเว็บ' }
+    ],
+    credits: 1,
+    duration: '4',
+    difficulty: 'intermediate',
+    prerequisites: ['Next.js และ Full-Stack Development'],
+    image: '/images/vercel.jpg'
+  },
+
 ];
 
 export default curriculum;
