@@ -11,5 +11,13 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ]
+  ],
+  "github": {
+    "silent": true
+  },
+  "build": {
+    "env": {
+      "NEXT_TELEMETRY_DISABLED": "1"
+    }
+  }
 }

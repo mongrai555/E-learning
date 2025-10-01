@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CourseCard from '@/components/CourseCard';
 import DarkModeToggle from '@/components/DarkModeToggle';
 import { curriculum, CourseContent } from '@/data/curriculum';
@@ -11,6 +11,11 @@ export default function CoursesPage() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedSemester, setSelectedSemester] = useState<number | null>(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // กรองคอร์สตามเงื่อนไขที่เลือก
   const filteredCourses = curriculum.filter(course => {
@@ -126,6 +131,24 @@ export default function CoursesPage() {
   const getSubjectsText = (count: number) => {
     return language === 'th' ? `${count} วิชา` : `${count} subjects`;
   };
+
+  // Don't render the full page until mounted to avoid hydration mismatch
+  if (!isMounted) {
+    return (
+      <div className="courses-container">
+        <div className="courses-wrapper">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              {getCoursesTitle()}
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {getCoursesDescription()}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="courses-container">

@@ -7,6 +7,7 @@
   --input-foreground: #000000;
   --border: #e5e7eb;
   --primary-light: #60a5fa;
+  --primary: #4f46e5;
   /* Video section colors for light mode */
   --video-overlay: rgba(0, 0, 0, 0.7);
   --video-title-color: #ffffff;
@@ -23,6 +24,7 @@
     --input-background: #2a2a2a;
     --input-foreground: #ffffff;
     --border: #2a2a2a;
+    --primary: #60a5fa;
     /* Video section colors for dark mode */
     --video-overlay: rgba(0, 0, 0, 0.7);
     --video-title-color: #ffffff;
@@ -39,6 +41,7 @@ html[data-theme="dark"] {
   --input-background: #2a2a2a;
   --input-foreground: #ffffff;
   --border: #2a2a2a;
+  --primary: #60a5fa;
   /* Video section colors for dark mode */
   --video-overlay: rgba(0, 0, 0, 0.7);
   --video-title-color: #ffffff;
@@ -54,6 +57,7 @@ html[data-theme="light"] {
   --input-background: #ffffff;
   --input-foreground: #000000;
   --border: #e5e7eb;
+  --primary: #4f46e5;
   /* Video section colors for light mode */
   --video-overlay: rgba(0, 0, 0, 0.7);
   --video-title-color: #ffffff;
@@ -1000,91 +1004,16 @@ body {
 .topic-dot {
   width: 0.5rem;
   height: 0.5rem;
-  background: #3b82f6;
   border-radius: 50%;
+  background: #4f46e5;
   margin-right: 0.75rem;
-}
-
-/* Objective List */
-.objective-item {
-  display: flex;
-  align-items: flex-start;
-}
-
-.objective-number {
   flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  background: #dbeafe;
-  color: #2563eb;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-right: 0.75rem;
-  margin-top: 0.125rem;
 }
 
-/* Section Divider */
-.section-divider {
-  height: 0.25rem;
-  width: 5rem;
-  background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
-  border-radius: 0.125rem;
-}
-
-/* Hover Effects */
-.hover-scale:hover {
-  transform: scale(1.05);
-}
-
-.hover-shadow:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.hover-lift:hover {
-  transform: translateY(-2px);
-}
-
-.hover-border-indigo:hover {
-  border-color: #6366f1;
-}
-
-/* Tool card specific hover */
-.p-4.border.border-gray-200.rounded-lg:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #6366f1;
-  transform: translateY(-2px);
-  transition: all 0.2s ease;
-}
-
-/* Border radius */
-.rounded-lg { border-radius: 0.5rem; }
-.rounded-xl { border-radius: 0.75rem; }
-.rounded-2xl { border-radius: 1rem; }
-.rounded-full { border-radius: 9999px; }
-
-/* Border */
-.border { border: 1px solid #e5e7eb; }
-.border-gray-200 { border-color: #e5e7eb; }
-.border-gray-300 { border-color: #d1d5db; }
-
-/* Dark mode borders */
-[data-theme="dark"] .border { border-color: #475569; }
-[data-theme="dark"] .border-gray-200 { border-color: #475569; }
-[data-theme="dark"] .border-gray-300 { border-color: #64748b; }
-
-/* Shadow */
-.shadow-sm { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); }
-.shadow-lg { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
-.shadow-xl { box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1); }
-
-/* Focus */
+/* Focus rings for accessibility */
 .focus-ring:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .focus-ring:focus-visible {
@@ -1092,130 +1021,42 @@ body {
   outline-offset: 2px;
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+  margin: 0.5rem 0;
+}
+
+/* Animation utilities */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
   }
 }
 
-/* Overflow */
-.overflow-hidden { overflow: hidden; }
-
-/* Position */
-.relative { position: relative; }
-.absolute { position: absolute; }
-.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
-
-/* Max width */
-.max-w-3xl { max-width: 48rem; }
-.max-w-6xl { max-width: 72rem; }
-.max-w-7xl { max-width: 80rem; }
-
-/* Margin auto */
-.mx-auto { margin-left: auto; margin-right: auto; }
-
-/* SVG Icons */
-.icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+/* Ensure proper theme initialization */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.icon-sm {
-  width: 1rem;
-  height: 1rem;
+/* Fix for video background in dark mode */
+.video-background {
+  background-color: #000;
 }
 
-/* Responsive Design */
-@media (min-width: 640px) {
-  .sm-px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .sm-grid-2 { grid-template-columns: repeat(2, 1fr); }
-  .courses-wrapper {
-    padding: 1.5rem;
-    max-width: 100%;
-    margin: 0;
-  }
-  .course-detail-wrapper {
-    padding: 1.5rem;
-    max-width: 100%;
-    margin: 0;
-  }
+/* Ensure proper contrast for buttons in both themes */
+.btn {
+  border: 1px solid var(--border);
 }
 
-@media (min-width: 1024px) {
-  .lg-px-8 { padding-left: 2rem; padding-right: 2rem; }
-  .lg-col-span-2 { grid-column: span 2; }
-  .courses-wrapper {
-    padding: 2rem;
-    max-width: 100%;
-    margin: 0;
-  }
-  .course-detail-wrapper {
-    padding: 2rem;
-    max-width: 100%;
-    margin: 0;
-  }
-}
-
-/* Additional responsive utilities */
-@media (max-width: 639px) {
-  .courses-wrapper {
-    max-width: 100%;
-    margin: 0;
-    padding: 1rem;
-  }
-  
-  .course-detail-wrapper {
-    max-width: 100%;
-    margin: 0;
-    padding: 1rem;
-  }
-  
-  .card {
-    margin: 0;
-  }
-  
-  .course-card-content {
-    padding: 1rem;
-  }
-  
-  .btn-gradient {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-  }
-  
-  .text-4xl {
-    font-size: 2rem;
-    line-height: 2.25rem;
-  }
-  
-  .text-xl {
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-  }
-}
-
-@media (max-width: 479px) {
-  .grid-1 {
-    gap: 1rem;
-  }
-  
-  .space-y-8 > * + * {
-    margin-top: 1.5rem;
-  }
-  
-  .p-8 {
-    padding: 1.5rem;
-  }
-  
-  .mb-8 {
-    margin-bottom: 1.5rem;
-  }
+[data-theme="dark"] .btn {
+  border-color: #475569;
 }

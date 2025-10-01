@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import CourseCard from '@/components/CourseCard';
 import DarkModeToggle from '@/components/DarkModeToggle';
 import { curriculum } from '@/data/curriculum';

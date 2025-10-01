@@ -4,8 +4,10 @@ import React, { useState, useEffect } from 'react';
 
 const DarkModeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     // Check for saved theme preference or default to light mode
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -24,6 +26,33 @@ const DarkModeToggle = () => {
     document.documentElement.setAttribute('data-theme', newMode ? 'dark' : 'light');
     localStorage.setItem('theme', newMode ? 'dark' : 'light');
   };
+
+  // Don't render the toggle until mounted to avoid hydration mismatch
+  if (!isMounted) {
+    return (
+      <div 
+        className="toggle-container"
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 1000,
+          visibility: 'hidden'
+        }}
+      >
+        <input
+          type="checkbox"
+          id="dark-mode-toggle"
+          className="toggle-checkbox"
+          checked={false}
+          onChange={toggleDarkMode}
+        />
+        <label htmlFor="dark-mode-toggle" className="toggle-label">
+          <span className="toggle-text"></span>
+        </label>
+      </div>
+    );
+  }
 
   return (
     <div 
