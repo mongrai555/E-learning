@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import CourseCard from '@/components/CourseCard';
 import DarkModeToggle from '@/components/DarkModeToggle';
 import { curriculum } from '@/data/curriculum';
@@ -143,7 +143,9 @@ export default function Home() {
       minHeight: 'calc(100vh - 80px)',
       backgroundColor: 'var(--background)',
       padding: '0',
-      fontFamily: 'Arial, sans-serif'
+      fontFamily: 'Arial, sans-serif',
+      width: '100%',
+      margin: 0
     }}>
       {/* Dark Mode Toggle */}
       <DarkModeToggle />
@@ -270,9 +272,10 @@ export default function Home() {
       
       {/* Main content area below the video section */}
       <div style={{
-        maxWidth: '1200px',
+        maxWidth: '100%',
         margin: '0 auto',
-        padding: '40px 20px'
+        padding: '40px 20px',
+        width: '100%'
       }}>
         <h2 style={{
           fontSize: '2rem',
@@ -289,7 +292,8 @@ export default function Home() {
           display: 'flex',
           gap: '30px',
           alignItems: 'flex-start',
-          marginBottom: '50px'
+          marginBottom: '50px',
+          flexWrap: 'wrap'
         }}>
           {/* Left column - GitHub Course */}
           {githubCourse && (
@@ -304,6 +308,7 @@ export default function Home() {
                     <img 
                       src={githubCourse.image} 
                       alt={githubCourse.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   ) : (
                     <div className="course-image-letter">
@@ -360,7 +365,7 @@ export default function Home() {
                   <a href={`/courses/${githubCourse.id}`}>
                     <button className="w-full btn-gradient focus-ring">
                       <span className="flex items-center justify-center">
-                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {language === 'th' ? 'เริ่มเรียน' : 'Start Learning'}
@@ -378,7 +383,8 @@ export default function Home() {
             padding: '20px',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            minWidth: '300px'
           }}>
             <h3 style={{
               fontSize: '1.5rem',
@@ -459,7 +465,8 @@ export default function Home() {
           display: 'flex',
           gap: '30px',
           alignItems: 'flex-start',
-          marginBottom: '50px'
+          marginBottom: '50px',
+          flexWrap: 'wrap'
         }}>
           {/* Left column - Docker Course */}
           {dockerCourse && (
@@ -474,6 +481,7 @@ export default function Home() {
                     <img 
                       src={dockerCourse.image} 
                       alt={dockerCourse.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   ) : (
                     <div className="course-image-letter">
@@ -530,7 +538,7 @@ export default function Home() {
                   <a href={`/courses/${dockerCourse.id}`}>
                     <button className="w-full btn-gradient focus-ring">
                       <span className="flex items-center justify-center">
-                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {language === 'th' ? 'เริ่มเรียน' : 'Start Learning'}
@@ -548,7 +556,8 @@ export default function Home() {
             padding: '20px',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            minWidth: '300px'
           }}>
             <h3 style={{
               fontSize: '1.5rem',
@@ -674,13 +683,15 @@ export default function Home() {
             alignItems: 'flex-start',
             maxWidth: '1200px',
             margin: '0 auto',
-            padding: '0 20px'
+            padding: '0 20px',
+            flexWrap: 'wrap'
           }}>
             {/* Left column - Profile video */}
             <div style={{
               flex: '1',
               display: 'flex',
-              justifyContent: 'flex-start'
+              justifyContent: 'flex-start',
+              minWidth: '300px'
             }}>
               <div style={{
                 width: '100%',
@@ -708,7 +719,8 @@ export default function Home() {
             
             {/* Right column - Profile information */}
             <div style={{
-              flex: '1'
+              flex: '1',
+              minWidth: '300px'
             }}>
               <h3 style={{
                 fontSize: '1.5rem',
@@ -783,6 +795,24 @@ export default function Home() {
           100% {
             opacity: 0.8;
             transform: scale(1.02);
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .course-card.compact {
+            max-width: 100%;
+          }
+          
+          h1 {
+            font-size: 2rem;
+          }
+          
+          h2 {
+            font-size: 1.5rem;
+          }
+          
+          .video-section {
+            height: 40vh;
           }
         }
       `}</style>

@@ -1060,3 +1060,11 @@ html {
 [data-theme="dark"] .btn {
   border-color: #475569;
 }
+
+/* Full screen layout */
+#__next {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
