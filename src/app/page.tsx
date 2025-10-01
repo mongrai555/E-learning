@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import CourseCard from '@/components/CourseCard';
 import DarkModeToggle from '@/components/DarkModeToggle';
 import { curriculum } from '@/data/curriculum';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const skills = [
     { id: 1, name: language === 'th' ? 'Web Development' : 'Web Development', icon: "💻" },
     { id: 2, name: language === 'th' ? 'Database' : 'Database', icon: "🗄️" },

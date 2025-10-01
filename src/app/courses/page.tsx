@@ -7,7 +7,7 @@ import { curriculum, CourseContent } from '@/data/curriculum';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function CoursesPage() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedSemester, setSelectedSemester] = useState<number | null>(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);

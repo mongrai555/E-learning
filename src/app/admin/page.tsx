@@ -4,6 +4,68 @@ import React, { useState } from "react";
 import "./admin.css";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+// Mock data for courses
+const courses = [
+  {
+    id: "1",
+    name: "การพัฒนาเว็บด้วย React",
+    year: "ปี 2",
+    semester: "เทอม 1",
+    students: 45,
+    status: "active",
+    progress: 75,
+    instructor: "ดร. สมชาย ใจดี",
+    lastUpdate: "2023-10-15"
+  },
+  {
+    id: "2",
+    name: "การจัดการฐานข้อมูล",
+    year: "ปี 1",
+    semester: "เทอม 2",
+    students: 38,
+    status: "active",
+    progress: 60,
+    instructor: "ผศ. สมศรี รักเรียน",
+    lastUpdate: "2023-10-10"
+  },
+  {
+    id: "3",
+    name: "อัลกอริทึมและโครงสร้างข้อมูล",
+    year: "ปี 2",
+    semester: "เทอม 1",
+    students: 52,
+    status: "inactive",
+    progress: 0,
+    instructor: "รศ. สมหมาย ปัญญา",
+    lastUpdate: "2023-09-20"
+  }
+];
+
+// Mock data for users
+const users = [
+  {
+    id: "1",
+    name: "นักเรียน ดีเด่น",
+    email: "student1@example.com",
+    role: "student",
+    status: "active"
+  },
+  {
+    id: "2",
+    name: "อาจารย์ ผู้สอน",
+    email: "teacher1@mju.ac.th",
+    role: "teacher",
+    status: "active"
+  },
+  {
+    id: "3",
+    name: "นักเรียน ขยัน",
+    email: "student2@example.com",
+    role: "student",
+    status: "inactive"
+  }
+];
+
 // TabButton Component
 interface TabButtonProps {
   id: string;
@@ -21,47 +83,9 @@ const TabButton = ({ id, label, isActive, onClick }: TabButtonProps) => (
   </button>
 );
 
-export default function AdminPage() {
+const AdminPage = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const { t } = useLanguage();
-  const [courses, setCourses] = useState([
-    // ปี 1 เทอม 1
-    { id: 1, name: "การเขียนโปรแกรมเบื้องต้น (Fundamentals of Programming)", students: 45, status: "active", progress: 78, instructor: "ผศ. ภานุวัฒน์ เมฆะ", lastUpdate: "2024-01-15", year: "ปี 1", semester: "เทอม 1" },
-    { id: 2, name: "เทคโนโลยีสารสนเทศและการสื่อสาร (Information and Communications Technology)", students: 38, status: "active", progress: 65, instructor: "ผศ.ดร. ปวีณ เขื่อนแก้ว", lastUpdate: "2024-01-14", year: "ปี 1", semester: "เทอม 1" },
-    // ปี 1 เทอม 2
-    { id: 3, name: "องค์ประกอบและสถาปัตยกรรมคอมพิวเตอร์ (Computer Organization and Architecture)", students: 52, status: "active", progress: 82, instructor: "ผศ. ภานุวัฒน์ เมฆะ", lastUpdate: "2024-01-16", year: "ปี 1", semester: "เทอม 2" },
-    { id: 4, name: "เครือข่ายคอมพิวเตอร์เบื้องต้น (Introduction to Computer Network)", students: 41, status: "active", progress: 70, instructor: "ผศ.ดร. สนิท สิทธิ", lastUpdate: "2024-01-10", year: "ปี 1", semester: "เทอม 2" },
-    { id: 5, name: "การเขียนโปรแกรมและทักษะการแก้ปัญหา (Programming and Problem Solving Skills)", students: 29, status: "active", progress: 55, instructor: "ผศ.ดร. พาสน์ ปราโมกข์ชน", lastUpdate: "2024-01-13", year: "ปี 1", semester: "เทอม 2" },
-    // ปี 2 เทอม 1
-    { id: 6, name: "โครงสร้างข้อมูลและอัลกอริทึม (Data Structure and Algorithm)", students: 35, status: "active", progress: 60, instructor: "ผศ.ดร. ปวีณ เขื่อนแก้ว", lastUpdate: "2024-01-08", year: "ปี 2", semester: "เทอม 1" },
-    { id: 7, name: "ฐานข้อมูลโครงสร้างเชิงสัมพันธ์ (Structure Relational Database)", students: 30, status: "active", progress: 45, instructor: "ผศ.ดร. ปวีณ เขื่อนแก้ว", lastUpdate: "2024-01-12", year: "ปี 2", semester: "เทอม 1" },
-    { id: 8, name: "GitHub และการควบคุมเวอร์ชั่น", students: 40, status: "active", progress: 75, instructor: "ผศ.ดร. สมนึก สินธุปวน", lastUpdate: "2024-01-11", year: "ปี 2", semester: "เทอม 1" },
-    { id: 9, name: "Docker และ Containerization", students: 25, status: "active", progress: 50, instructor: "อ. อลงกต กองมณี", lastUpdate: "2024-01-09", year: "ปี 2", semester: "เทอม 1" },
-    { id: 10, name: "Playwright และการทดสอบอัตโนมัติ", students: 28, status: "active", progress: 40, instructor: "อ. อลงกต กองมณี", lastUpdate: "2024-01-07", year: "ปี 2", semester: "เทอม 1" },
-    { id: 11, name: "Postman และการทดสอบ API", students: 32, status: "active", progress: 65, instructor: "ผศ.ดร. สมนึก สินธุปวน", lastUpdate: "2024-01-14", year: "ปี 2", semester: "เทอม 1" },
-    { id: 12, name: "Figma และการออกแบบ UI/UX", students: 38, status: "active", progress: 80, instructor: "อ. อรรถวิท ชังคมานนท์", lastUpdate: "2024-01-15", year: "ปี 2", semester: "เทอม 1" },
-    { id: 13, name: "HTML5 และ CSS3", students: 42, status: "active", progress: 85, instructor: "อ. อรรถวิท ชังคมานนท์", lastUpdate: "2024-01-16", year: "ปี 2", semester: "เทอม 1" },
-    { id: 14, name: "Tailwind CSS Framework", students: 36, status: "active", progress: 70, instructor: "อ. อรรถวิท ชังคมานนท์", lastUpdate: "2024-01-13", year: "ปี 2", semester: "เทอม 1" },
-    { id: 15, name: "JavaScript", students: 45, status: "active", progress: 75, instructor: "อ. อรรถวิท ชังคมานนท์", lastUpdate: "2024-01-12", year: "ปี 2", semester: "เทอม 1" },
-    { id: 16, name: "React และการพัฒนา Frontend", students: 33, status: "active", progress: 60, instructor: "อ. อรรถวิท ชังคมานนท์", lastUpdate: "2024-01-10", year: "ปี 2", semester: "เทอม 1" },
-    { id: 17, name: "Next.js และ Full Stack Development", students: 27, status: "active", progress: 45, instructor: "อ. อรรถวิท ชังคมานนท์", lastUpdate: "2024-01-08", year: "ปี 2", semester: "เทอม 1" },
-    { id: 18, name: "Vercel และการ Deploy เว็บแอปพลิเคชั่น", students: 31, status: "active", progress: 55, instructor: "อ. อรรถวิท ชังคมานนท์", lastUpdate: "2024-01-09", year: "ปี 2", semester: "เทอม 1" }
-  ]);
-
-  const [users, setUsers] = useState([
-    { id: 1, name: "นายเขมโสภณ วงศ์นฤเดชากุล", email: "mju6704101312@mju.ac.th", role: "student", status: "active", joinDate: "2022-01-10", courses: 3, progress: 95 },
-    { id: 2, name: "นางสาวกาญจณา ประทาน", email: "mju6704101390@mju.ac.th", role: "student", status: "active", joinDate: "2023-09-01", courses: 4, progress: 88 },
-    { id: 3, name: "นายณัฐดนัย ปู่วงษ์", email: "mju6704101323@mju.ac.th", role: "student", status: "active", joinDate: "2023-08-15", courses: 3, progress: 75 },
-    { id: 4, name: "นางสาวกฤษณา โพธา", email: "mju6704101304@mju.ac.th", role: "student", status: "active", joinDate: "2023-10-05", courses: 2, progress: 60 },
-    { id: 5, name: "นางสาวพิมลภัทร หอจงกล", email: "mju6704101361@mju.ac.th", role: "student", status: "active", joinDate: "2021-06-15", courses: 2, progress: 90 }
-  ]);
-
-  const [notifications, setNotifications] = useState([
-    { id: 1, type: "info", title: "การอัปเดตระบบ", message: "ระบบจะมีการอัปเดตในวันที่ 20 มกราคม 2024", time: "2 ชั่วโมงที่แล้ว", read: false },
-    { id: 2, type: "success", title: "คอร์สใหม่เปิดแล้ว", message: "คอร์ส 'ปัญญาประดิษฐ์เบื้องต้น' พร้อมให้บริการแล้ว", time: "5 ชั่วโมงที่แล้ว", read: false },
-    { id: 3, type: "warning", title: "ผู้ใช้ไม่ได้เข้าระบบนาน", message: "มีผู้ใช้ 3 คนที่ไม่ได้เข้าระบบมากกว่า 30 วัน", time: "1 วันที่แล้ว", read: true },
-    { id: 4, type: "error", title: "ข้อผิดพลาดเซิร์ฟเวอร์", message: "เซิร์ฟเวอร์มีปัญหาเล็กน้อย แต่แก้ไขแล้ว", time: "3 วันที่แล้ว", read: true }
-  ]);
 
   const renderDashboard = () => (
     <div className="fade-in">
@@ -365,4 +389,6 @@ export default function AdminPage() {
       </div>
     </div>
   );
-}
+};
+
+export default AdminPage;

@@ -2,9 +2,9 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { curriculum, CourseContent, Tool } from '@/data/curriculum';
-import DarkModeToggle from '@/components/DarkModeToggle';
+import { curriculum, CourseContent } from '@/data/curriculum';
 import { useLanguage } from '@/contexts/LanguageContext';
+import DarkModeToggle from '@/components/DarkModeToggle';
 
 interface CourseDetailPageProps {
   params: {
@@ -13,294 +13,295 @@ interface CourseDetailPageProps {
 }
 
 export default function CourseDetailPage({ params }: CourseDetailPageProps) {
+  const { language } = useLanguage();
   const course = curriculum.find(c => c.id === params.id);
-  const { t, language } = useLanguage();
 
   if (!course) {
     notFound();
   }
 
-  const getYearColorClass = (year: number) => {
-    switch (year) {
-      case 1:
-        return 'badge-year-1';
-      case 2:
-        return 'badge-year-2';
-      default:
-        return 'badge-year-default';
-    }
+  // Translation functions
+  const getCourseDetailTitle = () => {
+    return language === 'th' ? 'รายละเอียดคอร์สเรียน' : 'Course Details';
   };
 
-  const getSemesterText = () => {
-    return language === 'th' ? `เทอม ${course.semester}` : `Semester ${course.semester}`;
+  const getBackToCoursesText = () => {
+    return language === 'th' ? 'กลับไปหน้าคอร์สเรียน' : 'Back to Courses';
   };
 
-  const getYearText = () => {
-    return language === 'th' ? `ปีที่ ${course.year}` : `Year ${course.year}`;
+  const getCourseDescriptionTitle = () => {
+    return language === 'th' ? 'คำอธิบายรายวิชา' : 'Course Description';
   };
 
-  const getToolsAndTechnologiesText = () => {
-    return language === 'th' ? 'เครื่องมือและเทคโนโลยีที่ใช้' : 'Tools and Technologies Used';
-  };
-
-  const getCourseContentText = () => {
-    return language === 'th' ? 'เนื้อหาวิชา' : 'Course Content';
-  };
-
-  const getLearningObjectivesText = () => {
+  const getLearningObjectivesTitle = () => {
     return language === 'th' ? 'จุดประสงค์การเรียนรู้' : 'Learning Objectives';
   };
 
-  const getCourseTopicsText = () => {
+  const getCourseTopicsTitle = () => {
     return language === 'th' ? 'หัวข้อที่เรียน' : 'Course Topics';
   };
 
-  const getCourseInfoText = () => {
-    return language === 'th' ? 'ข้อมูลวิชา' : 'Course Information';
+  const getToolsUsedTitle = () => {
+    return language === 'th' ? 'เครื่องมือที่ใช้' : 'Tools Used';
   };
 
-  const getAcademicYearText = () => {
-    return language === 'th' ? 'ปีการศึกษา' : 'Academic Year';
-  };
-
-  const getSemesterInfoText = () => {
-    return language === 'th' ? 'เทอม' : 'Semester';
-  };
-
-  const getPrerequisitesText = () => {
+  const getPrerequisitesTitle = () => {
     return language === 'th' ? 'วิชาที่ต้องเรียนก่อน' : 'Prerequisites';
   };
 
-  const getAllCoursesText = () => {
-    return language === 'th' ? 'รายวิชาทั้งหมด' : 'All Courses';
+  const getCreditsText = () => {
+    return language === 'th' ? 'หน่วยกิต' : 'Credits';
   };
 
-  const getBackToAllCoursesText = () => {
-    return language === 'th' ? '← กลับไปรายวิชาทั้งหมด' : '← Back to All Courses';
+  const getDurationText = () => {
+    return language === 'th' ? 'ระยะเวลา' : 'Duration';
   };
 
-  const getVideoSectionText = () => {
-    return language === 'th' ? 'บทเรียน' : 'Lessons';
+  const getYearText = () => {
+    return language === 'th' ? 'ชั้นปี' : 'Year';
   };
 
-  const getClickToStartText = () => {
-    return language === 'th' ? 'คลิกเพื่อเริ่มเรียน' : 'Click to start learning';
+  const getSemesterText = () => {
+    return language === 'th' ? 'เทอม' : 'Semester';
   };
 
-  const getPartText = (partNumber: number) => {
-    return language === 'th' ? `Part ${partNumber}` : `Part ${partNumber}`;
+  const getDifficultyText = () => {
+    return language === 'th' ? 'ระดับความยาก' : 'Difficulty';
+  };
+
+  const getBeginnerText = () => {
+    return language === 'th' ? 'เริ่มต้น' : 'Beginner';
+  };
+
+  const getIntermediateText = () => {
+    return language === 'th' ? 'ปานกลาง' : 'Intermediate';
+  };
+
+  const getAdvancedText = () => {
+    return language === 'th' ? 'สูง' : 'Advanced';
+  };
+
+  const getStartLearningText = () => {
+    return language === 'th' ? 'เริ่มเรียน' : 'Start Learning';
+  };
+
+  const getDifficultyBadgeText = () => {
+    switch (course.difficulty) {
+      case 'beginner': return getBeginnerText();
+      case 'intermediate': return getIntermediateText();
+      case 'advanced': return getAdvancedText();
+      default: return course.difficulty;
+    }
   };
 
   return (
-    <div className="courses-container">
-      <div className="course-detail-wrapper">
-        {/* Breadcrumb */}
-        <nav className="breadcrumb">
-          <div className="flex items-center space-x-2 text-sm text-gray-500">
-            <Link href="/courses" className="hover:text-blue-600">
-              {getAllCoursesText()}
-            </Link>
-            <span>/</span>
-            <span className="current">{language === 'th' ? course.title : course.titleEn}</span>
-          </div>
-        </nav>
+    <div className="course-detail-wrapper">
+      {/* Dark Mode Toggle */}
+      <DarkModeToggle />
+      
+      <div className="course-main-grid">
+        {/* Main Content */}
+        <div className="space-y-8">
+          {/* Breadcrumb */}
+          <nav className="breadcrumb">
+            <Link href="/">{language === 'th' ? 'หน้าหลัก' : 'Home'}</Link>
+            <span> / </span>
+            <Link href="/courses">{language === 'th' ? 'คอร์สเรียน' : 'Courses'}</Link>
+            <span> / </span>
+            <span className="current">
+              {language === 'th' ? course.title : course.titleEn}
+            </span>
+          </nav>
 
-        {/* Course Hero Section */}
-        <div className="card-xl mb-8">
-          {/* Hero content with improved design */}
-          <div className="p-8">
-            <div className="flex flex-col lg:flex-row gap-8 items-start">
-              {/* Course Image */}
-              {course.image && (
-                <div className="lg:w-1/3">
-                  <div className="relative overflow-hidden rounded-lg shadow-lg">
-                    <img 
-                      src={course.image} 
-                      alt={course.title}
-                      className="w-full h-48 lg:h-56 object-cover"
-                    />
+          {/* Course Header */}
+          <div className="course-card card-xl">
+            <div className="course-card-image" style={{ height: '300px' }}>
+              {course.image ? (
+                <img 
+                  src={course.image} 
+                  alt={course.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              ) : (
+                <div className="course-image-letter">
+                  <div className="text-6xl font-bold">
+                    {course.title.charAt(0)}
                   </div>
                 </div>
               )}
+              <div className="course-card-overlay"></div>
               
-              {/* Course Info */}
-              <div className="flex-1">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                  {language === 'th' ? course.title : course.titleEn}
-                </h1>
-                <h2 className="text-2xl text-gray-600 mb-6 font-medium">
-                  {language === 'th' ? course.titleEn : course.title}
-                </h2>
-                
-                {/* Course Description */}
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  {language === 'th' ? course.fullDescription : course.fullDescriptionEn}
-                </p>
+              {/* Course badges */}
+              <div className="badge-container-tl">
+                <span className="badge badge-year-2">
+                  {getYearText()} {course.year}
+                </span>
+                <span className="badge badge-semester">
+                  {getSemesterText()} {course.semester}
+                </span>
+              </div>
+              
+              <div className="badge-container-tr">
+                <span className={`badge badge-xs ${
+                  course.difficulty === 'beginner' ? 'badge-difficulty-beginner' :
+                  course.difficulty === 'intermediate' ? 'badge-difficulty-intermediate' :
+                  'badge-difficulty-advanced'
+                }`}>
+                  {getDifficultyBadgeText()}
+                </span>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Tools and Technologies Section */}
-        <div className="card p-8 mb-8">
-          <div className="flex items-center mb-6">
-            <h3 className="text-2xl font-bold text-gray-900">
-              {getToolsAndTechnologiesText()}
-            </h3>
-          </div>
-          <div className="grid-1 sm-grid-2 lg-grid-3 gap-4">
-            {course.tools.map((tool, index) => (
-              <div key={index} className="p-4 border border-gray-200 rounded-lg hover-shadow hover-lift">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-semibold text-gray-900">{tool.name}</h4>
-                  <span className="badge badge-sm badge-year-1">
-                    {tool.type}
-                  </span>
-                </div>
-                {tool.description && (
-                  <p className="text-sm text-gray-600">{language === 'th' ? tool.description : tool.descriptionEn || tool.description}</p>
+            
+            <div className="course-card-content">
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {language === 'th' ? course.title : course.titleEn}
+              </h1>
+              
+              <p className="text-lg text-gray-600 mb-6">
+                {language === 'th' ? course.titleEn : course.title}
+              </p>
+              
+              <div className="grid-2 gap-4 mb-6">
+                {course.credits && (
+                  <div className="flex items-center">
+                    <span className="font-semibold mr-2">📚</span>
+                    <span>{getCreditsText()}: {course.credits}</span>
+                  </div>
+                )}
+                {course.duration && (
+                  <div className="flex items-center">
+                    <span className="font-semibold mr-2">⏱️</span>
+                    <span>{getDurationText()}: {course.duration}</span>
+                  </div>
                 )}
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Video Section */}
-        <div className="card p-8 mb-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Video Player */}
-            <div className="space-y-4">
-              <div className="relative bg-gray-100 rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4 mx-auto">
-                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </div>
-                    <p className="text-gray-600">{getClickToStartText()}</p>
-                  </div>
+              
+              {course.prerequisites && course.prerequisites.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold mb-2">
+                    📋 {getPrerequisitesTitle()}
+                  </h3>
+                  <ul className="list-disc list-inside text-gray-600">
+                    {course.prerequisites.map((prereq, index) => (
+                      <li key={index}>{prereq}</li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            </div>
-
-            {/* Video Parts */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                {getVideoSectionText()}
-              </h4>
-              <div className="space-y-3">
-                {[1, 2, 3, 4].map((partNumber) => (
-                  <div key={partNumber} className="p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-all cursor-pointer">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
-                          {partNumber}
-                        </div>
-                        <span className="font-medium text-gray-900">
-                          {getPartText(partNumber)}
-                        </span>
-                      </div>
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              )}
+              
+              <a href="#">
+                <button className="w-full btn-gradient">
+                  <span className="flex items-center justify-center">
+                    <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {getStartLearningText()}
+                  </span>
+                </button>
+              </a>
             </div>
           </div>
-        </div>
-
-        {/* Course Content */}
-        <div className="course-main-grid gap-8">
-          {/* Main Content */}
-          <div className="space-y-8">
-            {/* Learning Objectives */}
+          
+          {/* Course Description */}
+          <div className="card p-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              📖 {getCourseDescriptionTitle()}
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              {language === 'th' ? course.fullDescription : course.fullDescriptionEn}
+            </p>
+          </div>
+          
+          {/* Learning Objectives */}
+          {(language === 'th' ? course.objectives : course.objectivesEn).length > 0 && (
             <div className="card p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                {getLearningObjectivesText()}
-              </h3>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                🎯 {getLearningObjectivesTitle()}
+              </h2>
               <ul className="space-y-3">
                 {(language === 'th' ? course.objectives : course.objectivesEn).map((objective, index) => (
-                  <li key={index} className="objective-item">
-                    <span className="objective-number">
-                      {index + 1}
-                    </span>
-                    <span className="text-gray-700">{objective}</span>
+                  <li key={index} className="topic-item">
+                    <div className="topic-dot"></div>
+                    <span className="text-gray-600">{objective}</span>
                   </li>
                 ))}
               </ul>
             </div>
-
-            {/* Course Topics */}
+          )}
+          
+          {/* Course Topics */}
+          {(language === 'th' ? course.topics : course.topicsEn).length > 0 && (
             <div className="card p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                {getCourseTopicsText()}
-              </h3>
-              <div className="grid-1 sm-grid-2 gap-3">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                📚 {getCourseTopicsTitle()}
+              </h2>
+              <ul className="space-y-3">
                 {(language === 'th' ? course.topics : course.topicsEn).map((topic, index) => (
-                  <div key={index} className="topic-item">
-                    <span className="topic-dot"></span>
-                    <span className="text-gray-700">{topic}</span>
-                  </div>
+                  <li key={index} className="topic-item">
+                    <div className="topic-dot"></div>
+                    <span className="text-gray-600">{topic}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        
+        {/* Sidebar */}
+        <div className="space-y-6">
+          {/* Tools Section */}
+          {course.tools && course.tools.length > 0 && (
+            <div className="card p-6">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                🛠️ {getToolsUsedTitle()}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {course.tools.map((tool, index) => (
+                  <span key={index} className="badge-tool">
+                    {tool.name}
+                  </span>
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Course Info */}
-            <div className="card p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                {getCourseInfoText()}
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <dt className="text-sm font-medium text-gray-500 mb-1">
-                    {getAcademicYearText()}
-                  </dt>
-                  <dd className="text-sm text-gray-900">
-                    {getYearText()}
-                  </dd>
+          )}
+          
+          {/* Video Lessons Preview */}
+          <div className="card p-6">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              🎥 บทเรียนวิดีโอ
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-blue-600 font-bold">1</span>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-gray-500 mb-1">
-                    {getSemesterInfoText()}
-                  </dt>
-                  <dd className="text-sm text-gray-900">
-                    {getSemesterText()}
-                  </dd>
+                  <div className="font-medium">บทนำ</div>
+                  <div className="text-sm text-gray-500">10 นาที</div>
                 </div>
-                {course.prerequisites && (
-                  <div>
-                    <dt className="text-sm font-medium text-gray-500 mb-1">
-                      {getPrerequisitesText()}
-                    </dt>
-                    <dd className="text-sm text-gray-900">
-                      {course.prerequisites.join(', ')}
-                    </dd>
-                  </div>
-                )}
               </div>
-            </div>
-
-            {/* Back to Courses */}
-            <div className="card p-6">
-              <Link
-                href="/courses"
-                className="btn-secondary w-full focus-ring"
-              >
-                {getBackToAllCoursesText()}
-              </Link>
+              <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-blue-600 font-bold">2</span>
+                </div>
+                <div>
+                  <div className="font-medium">เนื้อหาหลัก</div>
+                  <div className="text-sm text-gray-500">25 นาที</div>
+                </div>
+              </div>
+              <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-blue-600 font-bold">3</span>
+                </div>
+                <div>
+                  <div className="font-medium">แบบฝึกหัด</div>
+                  <div className="text-sm text-gray-500">15 นาที</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Dark Mode Toggle */}
-      <DarkModeToggle />
     </div>
   );
 }
