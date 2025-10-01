@@ -429,9 +429,37 @@ export default function Home() {
 
                   {/* Action Button */}
                   <a href={`/courses/${githubCourse.id}`}>
-                    <button className="w-full btn-gradient focus-ring">
-                      <span className="flex items-center justify-center">
-                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <button style={{
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      color: 'white',
+                      fontWeight: 500,
+                      padding: '0.5rem 1rem',
+                      borderRadius: '0.5rem',
+                      border: 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      transform: 'translateY(0)',
+                      fontSize: '0.875rem',
+                      width: '100%'
+                    }} 
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)';
+                      e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
+                      e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.2)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}>
+                      <span style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <svg style={{ 
+                          marginRight: '0.5rem'
+                        }} fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {language === 'th' ? 'เริ่มเรียน' : 'Start Learning'}
@@ -624,9 +652,31 @@ export default function Home() {
 
                   {/* Action Button */}
                   <a href={`/courses/${dockerCourse.id}`}>
-                    <button className="w-full btn-gradient focus-ring">
+                    <button style={{
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      color: 'white',
+                      fontWeight: 500,
+                      padding: '0.5rem 1rem',
+                      borderRadius: '0.5rem',
+                      border: 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      transform: 'translateY(0)',
+                      fontSize: '0.875rem',
+                      width: '100%'
+                    }} 
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)';
+                      e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
+                      e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.2)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}>
                       <span className="flex items-center justify-center">
-                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {language === 'th' ? 'เริ่มเรียน' : 'Start Learning'}
