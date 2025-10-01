@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DarkModeToggle from '@/components/DarkModeToggle';
 import { curriculum } from '@/data/curriculum';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -13,6 +13,30 @@ export default function Home() {
     docker: false,
     profile: false
   });
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Check for theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      setIsDarkMode(theme === 'dark');
+    };
+
+    // Check initial theme
+    checkTheme();
+
+    // Listen for theme changes
+    const observer = new MutationObserver(() => {
+      checkTheme();
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const skills = [
     { id: 1, name: language === 'th' ? 'Web Development' : 'Web Development', icon: "💻" },
@@ -314,7 +338,9 @@ export default function Home() {
         maxWidth: '100%',
         margin: '0 auto',
         padding: '40px 20px',
-        width: '100%'
+        width: '100%',
+        backgroundColor: 'var(--background)', // Ensure background color changes with theme
+        color: 'var(--foreground)' // Ensure text color changes with theme
       }}>
         <h2 style={{
           fontSize: '2rem',
@@ -743,7 +769,9 @@ export default function Home() {
           padding: '30px 0',
           borderTop: '1px solid var(--border)',
           borderBottom: '1px solid var(--border)',
-          position: 'relative'
+          position: 'relative',
+          backgroundColor: 'var(--background)', // Ensure background color changes with theme
+          color: 'var(--foreground)' // Ensure text color changes with theme
         }}>
           {/* Glowing effect overlay */}
           <div style={{
