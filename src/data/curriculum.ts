@@ -53,7 +53,7 @@ export const curriculum: CourseContent[] = [
     credits: 3,
     duration: '15',
     difficulty: 'beginner',
-    image: '/images/programming-fundamentals.jpg'
+    image: '/fundamentals.png'
   },
   {
     id: 'ict',
@@ -83,7 +83,7 @@ export const curriculum: CourseContent[] = [
     credits: 3,
     duration: '15',
     difficulty: 'beginner',
-    image: '/images/ict.jpg'
+    image: '/ICT.png'
   },
 
   // ปี 1 เทอม 2
@@ -115,7 +115,7 @@ export const curriculum: CourseContent[] = [
     duration: '15',
     difficulty: 'intermediate',
     prerequisites: ['เทคโนโลยีสารสนเทศและการสื่อสาร'],
-    image: '/images/computer-architecture.jpg'
+    image: '/iot.png'
   },
   {
     id: 'intro-network',
@@ -143,7 +143,7 @@ export const curriculum: CourseContent[] = [
     credits: 3,
     duration: '15',
     difficulty: 'intermediate',
-    image: '/images/computer-network.jpg'
+    image: '/internet.png'
   },
   {
     id: 'prog-problem-solving',
@@ -173,7 +173,7 @@ export const curriculum: CourseContent[] = [
     duration: '15',
     difficulty: 'intermediate',
     prerequisites: ['การเขียนโปรแกรมเบื้องต้น'],
-    image: '/images/problem-solving.jpg'
+    image: '/programing.png'
   },
 
   // ปี 2 เทอม 1
@@ -207,7 +207,7 @@ export const curriculum: CourseContent[] = [
     duration: '15',
     difficulty: 'intermediate',
     prerequisites: ['การเขียนโปรแกรมและทักษะการแก้ปัญหา'],
-    image: '/images/data-structure.jpg'
+    image: '/AG.png'
   },
   {
     id: 'relational-db',
@@ -238,7 +238,7 @@ export const curriculum: CourseContent[] = [
     credits: 3,
     duration: '15',
     difficulty: 'intermediate',
-    image: '/images/database.jpg'
+    image: '/database.png'
   },
   // คอร์สย่อยของวิศวกรรมซอฟต์แวร์
   {
@@ -269,7 +269,7 @@ export const curriculum: CourseContent[] = [
     credits: 1,
     duration: '4',
     difficulty: 'beginner',
-    image: '/images/github.jpg'
+    image: '/github_p.png'
   },
   {
     id: 'docker-course',
@@ -299,7 +299,7 @@ export const curriculum: CourseContent[] = [
     credits: 1,
     duration: '4',
     difficulty: 'intermediate',
-    image: '/images/docker.jpg'
+    image: '/docker_p.png'
   },
   {
     id: 'playwright-course',
@@ -329,7 +329,7 @@ export const curriculum: CourseContent[] = [
     credits: 1,
     duration: '4',
     difficulty: 'intermediate',
-    image: '/images/playwright.jpg'
+    image: '/playwright_p.png'
   },
   {
     id: 'postman-course',
@@ -359,7 +359,7 @@ export const curriculum: CourseContent[] = [
     credits: 1,
     duration: '4',
     difficulty: 'beginner',
-    image: '/images/postman.jpg'
+    image: '/postman_p.png'
   },
 
   // คอร์สย่อยของเว็บเทคโนโลยี
@@ -390,7 +390,7 @@ export const curriculum: CourseContent[] = [
     credits: 1,
     duration: '4',
     difficulty: 'beginner',
-    image: '/images/figma.jpg'
+    image: '/figma_p.png'
   },
   {
     id: 'html-css-course',
@@ -420,7 +420,7 @@ export const curriculum: CourseContent[] = [
     credits: 1,
     duration: '4',
     difficulty: 'beginner',
-    image: '/images/html-css.jpg'
+    image: '/html_css.png'
   },
   {
     id: 'tailwind-course',
@@ -450,7 +450,7 @@ export const curriculum: CourseContent[] = [
     duration: '4',
     difficulty: 'intermediate',
     prerequisites: ['HTML5 และ CSS3'],
-    image: '/images/tailwind.jpg'
+    image: '/tailwind_p.png'
   },
   {
     id: 'javascript-course',
@@ -480,7 +480,7 @@ export const curriculum: CourseContent[] = [
     duration: '4',
     difficulty: 'intermediate',
     prerequisites: ['การเขียนโปรแกรมและทักษะการแก้ปัญหา'],
-    image: '/images/javascript.jpg'
+    image: '/java_p.png'
   },
   {
     id: 'react-course',
@@ -510,7 +510,7 @@ export const curriculum: CourseContent[] = [
     duration: '4',
     difficulty: 'intermediate',
     prerequisites: ['JavaScript และ ES6+'],
-    image: '/images/react.jpg'
+    image: '/react_p.png'
   },
   {
     id: 'nextjs-course',
@@ -540,38 +540,9 @@ export const curriculum: CourseContent[] = [
     duration: '4',
     difficulty: 'advanced',
     prerequisites: ['React และการพัฒนา Frontend'],
-    image: '/images/nextjs.jpg'
+    image: '/next_p.png'
   },
-  {
-    id: 'vercel-deployment-course',
-    title: 'Vercel และการ Deploy เว็บแอปพลิเคชัน',
-    titleEn: 'Vercel and Web Application Deployment',
-    year: 2,
-    semester: 1,
-    description: 'เรียนรู้การ Deploy และจัดการเว็บแอปพลิเคชันด้วย Vercel Platform',
-    fullDescription: 'ศึกษาการใช้งาน Vercel สำหรับการ Deploy เว็บแอปพลิเคชัน การจัดการ Domain และการ Monitor Performance',
-    objectives: [
-      'เข้าใจกระบวนการ Deployment สมัยใหม่',
-      'Deploy เว็บแอปพลิเคชันด้วย Vercel ได้',
-      'จัดการ Domain และ Environment Variables ได้'
-    ],
-    topics: [
-      'Modern Deployment Concepts',
-      'Vercel Platform และ Features',
-      'Git Integration และ Automatic Deployment',
-      'Domain Management และ Custom Domains',
-      'Environment Variables และ Secrets',
-      'Analytics และ Performance Monitoring'
-    ],
-    tools: [
-      { name: 'Vercel', type: 'platform', description: 'แพลตฟอร์ม deployment สำหรับเว็บ' }
-    ],
-    credits: 1,
-    duration: '4',
-    difficulty: 'intermediate',
-    prerequisites: ['Next.js และ Full-Stack Development'],
-    image: '/images/vercel.jpg'
-  },
+
 
 ];
 

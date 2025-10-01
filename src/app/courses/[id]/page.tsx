@@ -3,6 +3,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { curriculum, CourseContent, Tool } from '@/data/curriculum';
+import DarkModeToggle from '@/components/DarkModeToggle';
 
 interface CourseDetailPageProps {
   params: {
@@ -46,12 +47,35 @@ export default function CourseDetailPage({ params }: CourseDetailPageProps) {
         <div className="card-xl mb-8">
           {/* Hero content with improved design */}
           <div className="p-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              {course.title}
-            </h1>
-            <h2 className="text-2xl text-gray-600 mb-6 font-medium">
-              {course.titleEn}
-            </h2>
+            <div className="flex flex-col lg:flex-row gap-8 items-start">
+              {/* Course Image */}
+              {course.image && (
+                <div className="lg:w-1/3">
+                  <div className="relative overflow-hidden rounded-lg shadow-lg">
+                    <img 
+                      src={course.image} 
+                      alt={course.title}
+                      className="w-full h-48 lg:h-56 object-cover"
+                    />
+                  </div>
+                </div>
+              )}
+              
+              {/* Course Info */}
+              <div className="flex-1">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                  {course.title}
+                </h1>
+                <h2 className="text-2xl text-gray-600 mb-6 font-medium">
+                  {course.titleEn}
+                </h2>
+                
+                {/* Course Description */}
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  {course.fullDescription}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -212,6 +236,9 @@ export default function CourseDetailPage({ params }: CourseDetailPageProps) {
           </div>
         </div>
       </div>
+      
+      {/* Dark Mode Toggle */}
+      <DarkModeToggle />
     </div>
   );
 }
