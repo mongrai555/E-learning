@@ -3,12 +3,15 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import LanguageSwitch from "./LanguageSwitch";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const { t } = useLanguage();
 
   // Check login status on component mount
   useEffect(() => {
@@ -47,23 +50,20 @@ const Navbar = () => {
       }}>
         <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
           <Link href="/" style={{ color: 'white', textDecoration: 'none' }}>
-            E-learning
+            {t('nav.appName')}
           </Link>
         </div>
         
         {/* Desktop Navigation - always visible on desktop */}
-        <div style={{ display: 'flex' }} className="md-flex">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="md-flex">
           <Link href="/" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            หน้าหลัก
+            {t('nav.home')}
           </Link>
           <Link href="/courses" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            คอร์สเรียน
-          </Link>
-          <Link href="/developer" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            ทีมงาน
+            {t('nav.courses')}
           </Link>
           <Link href="/admin" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-            ผู้ดูแลระบบ
+            {t('nav.admin')}
           </Link>
           {isLoggedIn ? (
             <button 
@@ -79,13 +79,17 @@ const Navbar = () => {
                 fontFamily: 'inherit'
               }}
             >
-              ออกจากระบบ
+              {t('nav.logout')}
             </button>
           ) : (
             <Link href="/login" style={{ color: '#bfdbfe', textDecoration: 'none', margin: '0 1rem', fontWeight: '500' }}>
-              เข้าสู่ระบบ
+              {t('nav.login')}
             </Link>
           )}
+          {/* Language Switch in Navbar */}
+          <div style={{ marginLeft: '1rem' }}>
+            <LanguageSwitch />
+          </div>
         </div>
         
         {/* Mobile Menu Button - only visible on mobile */}
@@ -123,7 +127,7 @@ const Navbar = () => {
             }}
             onClick={() => setIsMenuOpen(false)}
           >
-            หน้าหลัก
+            {t('nav.home')}
           </Link>
           <Link 
             href="/courses" 
@@ -136,20 +140,7 @@ const Navbar = () => {
             }}
             onClick={() => setIsMenuOpen(false)}
           >
-            คอร์สเรียน
-          </Link>
-          <Link 
-            href="/developer" 
-            style={{ 
-              display: 'block', 
-              color: 'white', 
-              textDecoration: 'none', 
-              padding: '0.5rem 0',
-              fontWeight: '500'
-            }}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            ทีมงาน
+            {t('nav.courses')}
           </Link>
           <Link 
             href="/admin" 
@@ -162,7 +153,7 @@ const Navbar = () => {
             }}
             onClick={() => setIsMenuOpen(false)}
           >
-            ผู้ดูแลระบบ
+            {t('nav.admin')}
           </Link>
           {isLoggedIn ? (
             <button 
@@ -185,7 +176,7 @@ const Navbar = () => {
                 fontFamily: 'inherit'
               }}
             >
-              ออกจากระบบ
+              {t('nav.logout')}
             </button>
           ) : (
             <Link 
@@ -199,7 +190,7 @@ const Navbar = () => {
               }}
               onClick={() => setIsMenuOpen(false)}
             >
-              เข้าสู่ระบบ
+              {t('nav.login')}
             </Link>
           )}
         </div>

@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { CourseContent } from '@/data/curriculum';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface CourseCardProps {
   course: CourseContent;
 }
 
 export default function CourseCard({ course }: CourseCardProps) {
+  const { t, language } = useLanguage();
+
   const getYearColor = (year: number) => {
     switch (year) {
       case 1:
@@ -33,14 +36,34 @@ export default function CourseCard({ course }: CourseCardProps) {
   const getDifficultyText = (difficulty: string) => {
     switch (difficulty) {
       case 'beginner':
-        return 'เริ่มต้น';
+        return language === 'th' ? 'เริ่มต้น' : 'Beginner';
       case 'intermediate':
-        return 'ปานกลาง';
+        return language === 'th' ? 'ปานกลาง' : 'Intermediate';
       case 'advanced':
-        return 'สูง';
+        return language === 'th' ? 'สูง' : 'Advanced';
       default:
-        return 'ไม่ระบุ';
+        return language === 'th' ? 'ไม่ระบุ' : 'Not specified';
     }
+  };
+
+  const getSemesterText = () => {
+    return language === 'th' ? `เทอม ${course.semester}` : `Semester ${course.semester}`;
+  };
+
+  const getYearText = () => {
+    return language === 'th' ? `ปี ${course.year}` : `Year ${course.year}`;
+  };
+
+  const getToolsText = () => {
+    return language === 'th' ? 'เครื่องมือที่ใช้:' : 'Tools used:';
+  };
+
+  const getOtherToolsText = (count: number) => {
+    return language === 'th' ? `+${count} อื่นๆ` : `+${count} more`;
+  };
+
+  const getStartLearningText = () => {
+    return language === 'th' ? 'เริ่มเรียน' : 'Start Learning';
   };
 
   return (
@@ -66,10 +89,10 @@ export default function CourseCard({ course }: CourseCardProps) {
         {/* Course badges */}
         <div className="badge-container-tl">
           <span className={`badge ${getYearColor(course.year)}`}>
-            ปี {course.year}
+            {getYearText()}
           </span>
           <span className="badge badge-semester">
-            เทอม {course.semester}
+            {getSemesterText()}
           </span>
         </div>
         
@@ -85,23 +108,23 @@ export default function CourseCard({ course }: CourseCardProps) {
       <div className="course-card-content">
         {/* Course Title */}
         <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
-          {course.title}
+          {language === 'th' ? course.title : course.titleEn}
         </h3>
         
         {/* English Title */}
         <p className="text-sm text-gray-600 mb-3 line-clamp-1 font-medium">
-          {course.titleEn}
+          {language === 'th' ? course.titleEn : course.title}
         </p>
 
         {/* Description */}
         <p className="text-sm text-gray-500 mb-4 line-clamp-3 leading-relaxed">
-          {course.description}
+          {language === 'th' ? course.description : course.descriptionEn || course.description}
         </p>
 
         {/* Tools Preview */}
         <div className="mb-4">
           <p className="text-xs font-semibold text-gray-700 mb-2">
-            เครื่องมือที่ใช้:
+            {getToolsText()}
           </p>
           <div className="flex flex-wrap gap-1">
             {course.tools.slice(0, 4).map((tool, index) => (
@@ -111,7 +134,7 @@ export default function CourseCard({ course }: CourseCardProps) {
             ))}
             {course.tools.length > 4 && (
               <span className="badge-tool bg-gray-200 text-gray-600">
-                +{course.tools.length - 4} อื่นๆ
+                {getOtherToolsText(course.tools.length - 4)}
               </span>
             )}
           </div>
@@ -129,7 +152,7 @@ export default function CourseCard({ course }: CourseCardProps) {
               <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              เริ่มเรียน
+              {getStartLearningText()}
             </span>
           </button>
         </Link>

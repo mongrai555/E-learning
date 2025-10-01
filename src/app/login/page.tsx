@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function LoginPage() {
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -91,13 +93,13 @@ export default function LoginPage() {
             color: '#1f2937',
             marginBottom: '8px'
           }}>
-            ยินดีต้อนรับ
+            {t('login.title')}
           </h1>
           <p style={{
             color: '#6b7280',
             fontSize: '1rem'
           }}>
-            กรุณาเข้าสู่ระบบเพื่อเข้าถึงบัญชีของคุณ
+            {t('login.description')}
           </p>
         </div>
         
@@ -110,7 +112,7 @@ export default function LoginPage() {
               color: '#374151',
               fontSize: '0.9rem'
             }}>
-              อีเมล
+              {t('login.email')}
             </label>
             <div style={{ position: 'relative' }}>
               <div style={{
@@ -156,7 +158,7 @@ export default function LoginPage() {
               color: '#374151',
               fontSize: '0.9rem'
             }}>
-              รหัสผ่าน
+              {t('login.password')}
             </label>
             <div style={{ position: 'relative' }}>
               <div style={{
@@ -220,7 +222,7 @@ export default function LoginPage() {
               e.currentTarget.style.boxShadow = '0 4px 6px rgba(37, 99, 235, 0.3)';
             }}
           >
-            เข้าสู่ระบบ
+            {t('login.submit')}
           </button>
         </form>
         
@@ -239,14 +241,14 @@ export default function LoginPage() {
           }}
           onMouseOver={(e) => e.currentTarget.style.color = '#1d4ed8'}
           onMouseOut={(e) => e.currentTarget.style.color = '#2563eb'}>
-            ลืมรหัสผ่าน?
+            {t('login.forgotPassword')}
           </a>
           <p style={{
             color: '#6b7280',
             fontSize: '0.9rem',
             marginTop: '12px'
           }}>
-            ยังไม่มีบัญชี?{' '}
+            {t('login.noAccount')}{' '}
             <a href="#" style={{
               color: '#2563eb',
               textDecoration: 'none',
@@ -255,7 +257,7 @@ export default function LoginPage() {
             }}
             onMouseOver={(e) => e.currentTarget.style.color = '#1d4ed8'}
             onMouseOut={(e) => e.currentTarget.style.color = '#2563eb'}>
-              ลงทะเบียน
+              {t('login.register')}
             </a>
           </p>
         </div>
