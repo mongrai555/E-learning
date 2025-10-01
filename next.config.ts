@@ -16,6 +16,33 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  // Optimize static assets
+  staticPageGenerationTimeout: 600,
+  // Handle large file uploads for Vercel
+  webpack: (config) => {
+    // Increase size limit for videos
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true,
+    };
+    
+    // Handle video files
+    config.module.rules.push({
+      test: /\.(mp4|webm|ogg|swf|flv)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            publicPath: '/_next/static/videos',
+            outputPath: 'static/videos',
+            name: '[name].[hash:7].[ext]',
+          },
+        },
+      ],
+    });
+    
+    return config;
+  },
 };
 
 export default nextConfig;

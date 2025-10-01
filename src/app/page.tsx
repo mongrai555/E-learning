@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CourseCard from '@/components/CourseCard';
 import DarkModeToggle from '@/components/DarkModeToggle';
 import { curriculum } from '@/data/curriculum';
@@ -8,6 +8,13 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
   const { language } = useLanguage();
+  const [videoError, setVideoError] = useState({
+    bg: false,
+    github: false,
+    docker: false,
+    profile: false
+  });
+
   const skills = [
     { id: 1, name: language === 'th' ? 'Web Development' : 'Web Development', icon: "💻" },
     { id: 2, name: language === 'th' ? 'Database' : 'Database', icon: "🗄️" },
@@ -19,6 +26,14 @@ export default function Home() {
   // คอร์ส GitHub และ Docker จากหลักสูตร
   const githubCourse = curriculum.find(course => course.id === 'github-course');
   const dockerCourse = curriculum.find(course => course.id === 'docker-course');
+
+  // Handle video errors
+  const handleVideoError = (videoType: string) => {
+    setVideoError(prev => ({
+      ...prev,
+      [videoType]: true
+    }));
+  };
 
   // Translation functions
   const getHomePageTitle = () => {
@@ -158,21 +173,46 @@ export default function Home() {
         minHeight: '400px',
         overflow: 'hidden'
       }}>
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          style={{ 
-            width: '100%', 
+        {videoError.bg ? (
+          // Fallback for background video
+          <div style={{
+            width: '100%',
             height: '100%',
-            objectFit: 'cover',
-            display: 'block'
-          }}
-        >
-          <source src="/bg_video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+            backgroundColor: 'var(--primary)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}>
+            <div style={{
+              textAlign: 'center',
+              color: 'white',
+              padding: '20px'
+            }}>
+              <h2 style={{ fontSize: '2rem', marginBottom: '10px' }}>E-Learning Platform</h2>
+              <p>Computer Science Department</p>
+            </div>
+          </div>
+        ) : (
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block'
+            }}
+            onError={() => handleVideoError('bg')}
+          >
+            <source src="/bg_video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
         
         {/* Content overlay on top of video - now responsive to theme */}
         <div style={{
@@ -442,20 +482,41 @@ export default function Home() {
               overflow: 'hidden',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
             }}>
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                style={{ 
-                  width: '100%', 
-                  height: 'auto',
-                  display: 'block'
-                }}
-              >
-                <source src="/github_video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              {videoError.github ? (
+                // Fallback for GitHub video
+                <div style={{
+                  width: '100%',
+                  height: '300px',
+                  backgroundColor: '#333',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.2rem'
+                }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🎥</div>
+                    <p>GitHub Tutorial Video</p>
+                    <p style={{ fontSize: '0.9rem', marginTop: '5px', opacity: '0.8' }}>Video failed to load</p>
+                  </div>
+                </div>
+              ) : (
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  style={{ 
+                    width: '100%', 
+                    height: 'auto',
+                    display: 'block'
+                  }}
+                  onError={() => handleVideoError('github')}
+                >
+                  <source src="/github_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
           </div>
         </div>
@@ -615,20 +676,41 @@ export default function Home() {
               overflow: 'hidden',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
             }}>
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                style={{ 
-                  width: '100%', 
-                  height: 'auto',
-                  display: 'block'
-                }}
-              >
-                <source src="/docker_video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              {videoError.docker ? (
+                // Fallback for Docker video
+                <div style={{
+                  width: '100%',
+                  height: '300px',
+                  backgroundColor: '#333',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.2rem'
+                }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🐳</div>
+                    <p>Docker Tutorial Video</p>
+                    <p style={{ fontSize: '0.9rem', marginTop: '5px', opacity: '0.8' }}>Video failed to load</p>
+                  </div>
+                </div>
+              ) : (
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  style={{ 
+                    width: '100%', 
+                    height: 'auto',
+                    display: 'block'
+                  }}
+                  onError={() => handleVideoError('docker')}
+                >
+                  <source src="/docker_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
           </div>
         </div>
@@ -700,20 +782,47 @@ export default function Home() {
                 overflow: 'hidden',
                 boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
               }}>
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  style={{ 
-                    width: '100%', 
-                    height: 'auto',
-                    display: 'block'
-                  }}
-                >
-                  <source src="/jojo.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {videoError.profile ? (
+                  // Fallback for profile video
+                  <div style={{
+                    width: '100%',
+                    height: '300px',
+                    backgroundImage: 'url("/jojo.jpg")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    justifyContent: 'center',
+                    padding: '20px'
+                  }}>
+                    <div style={{
+                      backgroundColor: 'rgba(0,0,0,0.7)',
+                      color: 'white',
+                      padding: '10px 20px',
+                      borderRadius: '4px',
+                      textAlign: 'center'
+                    }}>
+                      <h3>Prof. Attawit Changkamanon</h3>
+                      <p>Program Chair</p>
+                    </div>
+                  </div>
+                ) : (
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    style={{ 
+                      width: '100%', 
+                      height: 'auto',
+                      display: 'block'
+                    }}
+                    onError={() => handleVideoError('profile')}
+                  >
+                    <source src="/jojo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
               </div>
             </div>
             
