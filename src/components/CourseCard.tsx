@@ -58,6 +58,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
       {/* Course Image */}
       <div className="course-card-image">
         {course.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img 
             src={course.image} 
             alt={course.title}

@@ -2,7 +2,7 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { curriculum, CourseContent } from '@/data/curriculum';
+import { curriculum } from '@/data/curriculum';
 import { useLanguage } from '@/contexts/LanguageContext';
 import DarkModeToggle from '@/components/DarkModeToggle';
 
@@ -19,15 +19,6 @@ export default function CourseDetailPage({ params }: CourseDetailPageProps) {
   if (!course) {
     notFound();
   }
-
-  // Translation functions
-  const getCourseDetailTitle = () => {
-    return language === 'th' ? 'รายละเอียดคอร์สเรียน' : 'Course Details';
-  };
-
-  const getBackToCoursesText = () => {
-    return language === 'th' ? 'กลับไปหน้าคอร์สเรียน' : 'Back to Courses';
-  };
 
   const getCourseDescriptionTitle = () => {
     return language === 'th' ? 'คำอธิบายรายวิชา' : 'Course Description';
@@ -63,10 +54,6 @@ export default function CourseDetailPage({ params }: CourseDetailPageProps) {
 
   const getSemesterText = () => {
     return language === 'th' ? 'เทอม' : 'Semester';
-  };
-
-  const getDifficultyText = () => {
-    return language === 'th' ? 'ระดับความยาก' : 'Difficulty';
   };
 
   const getBeginnerText = () => {
@@ -117,6 +104,7 @@ export default function CourseDetailPage({ params }: CourseDetailPageProps) {
           <div className="course-card card-xl">
             <div className="course-card-image" style={{ height: '300px' }}>
               {course.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img 
                   src={course.image} 
                   alt={course.title}

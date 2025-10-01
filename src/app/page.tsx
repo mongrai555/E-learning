@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import CourseCard from '@/components/CourseCard';
+import React, { useState } from "react";
 import DarkModeToggle from '@/components/DarkModeToggle';
 import { curriculum } from '@/data/curriculum';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -345,6 +344,7 @@ export default function Home() {
                 {/* Course Image */}
                 <div className="course-card-image">
                   {githubCourse.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img 
                       src={githubCourse.image} 
                       alt={githubCourse.title}
@@ -539,6 +539,7 @@ export default function Home() {
                 {/* Course Image */}
                 <div className="course-card-image">
                   {dockerCourse.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img 
                       src={dockerCourse.image} 
                       alt={dockerCourse.title}
