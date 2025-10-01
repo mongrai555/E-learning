@@ -60,7 +60,7 @@ export default function LoginPage() {
       }}></div>
       
       <div style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)', // Changed from 0.95 to 0.7 for more transparency
         borderRadius: '16px',
         boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
         padding: '40px',
