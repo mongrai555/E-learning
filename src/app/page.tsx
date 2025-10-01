@@ -1,6 +1,10 @@
 "use client";
+"use client";
 
 import React from "react";
+import CourseCard from '@/components/CourseCard';
+import DarkModeToggle from '@/components/DarkModeToggle';
+import { curriculum } from '@/data/curriculum';
 
 export default function Home() {
   const skills = [
@@ -11,6 +15,10 @@ export default function Home() {
     { id: 5, name: "IoT", icon: "🌐" }
   ];
 
+  // คอร์ส GitHub และ Docker จากหลักสูตร
+  const githubCourse = curriculum.find(course => course.id === 'github-course');
+  const dockerCourse = curriculum.find(course => course.id === 'docker-course');
+
   return (
     <div style={{
       minHeight: 'calc(100vh - 80px)',
@@ -18,6 +26,9 @@ export default function Home() {
       padding: '0',
       fontFamily: 'Arial, sans-serif'
     }}>
+      {/* Dark Mode Toggle */}
+      <DarkModeToggle />
+
       {/* Full width video background section */}
       <div style={{ 
         position: 'relative',
@@ -151,49 +162,157 @@ export default function Home() {
           marginBottom: '30px',
           textAlign: 'left'
         }}>
-          คอร์สที่แนะนำและจำเป็นต่อการทำงาน Github!
+          คอร์สที่แนะนำและจำเป็นต่อการทำงาน Github and Docker!
         </h2>
         
-        {/* Two-column layout for GitHub content */}
+        {/* GitHub Course and Video Section */}
         <div style={{
           display: 'flex',
           gap: '30px',
           alignItems: 'flex-start',
           marginBottom: '50px'
         }}>
-          {/* Left column - Text content */}
+          {/* Left column - GitHub Course */}
+          {githubCourse && (
+            <div style={{
+              maxWidth: '280px',
+              width: '100%'
+            }}>
+              <div className="course-card compact">
+                {/* Course Image */}
+                <div className="course-card-image">
+                  {githubCourse.image ? (
+                    <img 
+                      src={githubCourse.image} 
+                      alt={githubCourse.title}
+                    />
+                  ) : (
+                    <div className="course-image-letter">
+                      <div className="text-6xl font-bold">
+                        {githubCourse.title.charAt(0)}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Overlay */}
+                  <div className="course-card-overlay"></div>
+                  
+                  {/* Course badges */}
+                  <div className="badge-container-tl">
+                    <span className="badge badge-year-2">
+                      ปี {githubCourse.year}
+                    </span>
+                    <span className="badge badge-semester">
+                      เทอม {githubCourse.semester}
+                    </span>
+                  </div>
+                  
+                  {/* Difficulty badge */}
+                  <div className="badge-container-tr">
+                    <span className="badge badge-xs badge-difficulty-beginner">
+                      เริ่มต้น
+                    </span>
+                  </div>
+                </div>
+
+                {/* Course Content */}
+                <div className="course-card-content">
+                  {/* Course Title */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                    {githubCourse.title}
+                  </h3>
+                  
+                  {/* English Title */}
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-1 font-medium">
+                    {githubCourse.titleEn}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-500 mb-4 line-clamp-3 leading-relaxed">
+                    {githubCourse.description}
+                  </p>
+
+                  {/* Course Info */}
+                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                    {/* ลบข้อมูล duration และ credits ออก */}
+                  </div>
+
+                  {/* Action Button */}
+                  <a href={`/courses/${githubCourse.id}`}>
+                    <button className="w-full btn-gradient focus-ring">
+                      <span className="flex items-center justify-center">
+                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        เริ่มเรียน
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Center column - GitHub Information */}
           <div style={{
-            flex: '1'
+            flex: '1',
+            padding: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
           }}>
             <h3 style={{
               fontSize: '1.5rem',
               fontWeight: '700',
               color: 'var(--foreground)',
-              marginBottom: '15px'
+              marginBottom: '15px',
+              textAlign: 'center'
             }}>
-              Github คืออะไร?
+              GitHub คืออะไร?
             </h3>
             
             <p style={{
               color: 'var(--foreground)',
-              fontSize: '1rem',
+              fontSize: '0.95rem',
               lineHeight: '1.6',
-              marginBottom: '20px'
+              textAlign: 'justify',
+              marginBottom: '15px'
             }}>
-              GitHub เป็นแพลตฟอร์มสำหรับใช้พัฒนา ซอฟต์แวร์แบบออนไลน์ ที่นักพัฒนาสามารถใช้ในการจัดเก็บโค้ด, ติดตามความเปลี่ยนแปลง และสร้างโครงการเพื่อพัฒนาซอฟต์แวร์ร่วมกับนักพัฒนารายอื่นได้
-              โดยคุณสมบัติการทำงานของ GitHub ทำให้นักพัฒนาสามารถแบ่งปันโค้ดที่ตนเองเขียนขึ้น ให้นักพัฒนารายอื่น ๆ ที่สนใจสามารถเข้ามาช่วยกันพัฒนาต่อได้ ซึ่งเป็นลักษณะการทำงานของโครงการแบบ เปิดเผยซอร์สโค้ด (Open-Source) นอกจากนี้ ตัว GitHub ยังถูกใช้เป็นโซเชียลเน็ตเวิร์คที่บรรดานักพัฒนาใช้ในการสร้างเครือข่ายเพื่อร่วมมือทำงานกับนักพัฒนาที่สนใจ และนำเสนอผลงานบนโลกออนไลน์
+              <strong>GitHub</strong> เป็นแพลตฟอร์มการพัฒนาซอฟต์แวร์แบบออนไลน์ ที่นักพัฒนาสามารถใช้ในการ:
+            </p>
+            
+            <ul style={{
+              color: 'var(--foreground)',
+              fontSize: '0.9rem',
+              lineHeight: '1.5',
+              paddingLeft: '20px',
+              marginBottom: '15px'
+            }}>
+              <li style={{ marginBottom: '8px' }}>จัดเก็บโค้ดและติดตามความเปลี่ยนแปลง</li>
+              <li style={{ marginBottom: '8px' }}>สร้างโครงการเพื่อพัฒนาร่วมกัน</li>
+              <li style={{ marginBottom: '8px' }}>แบ่งปันโค้ดและร่วมมือพัฒนา</li>
+              <li style={{ marginBottom: '8px' }}>สนับสนุน Open-Source</li>
+              <li>สร้างเครือข่ายและนำเสนอผลงาน</li>
+            </ul>
+            
+            <p style={{
+              color: 'var(--primary)',
+              fontSize: '0.9rem',
+              fontWeight: '600',
+              textAlign: 'center',
+              fontStyle: 'italic'
+            }}>
+              เครื่องมือจำเป็นสำหรับนักพัฒนาทุกคน!
             </p>
           </div>
           
-          {/* Right column - Video */}
+          {/* Right column - GitHub Video */}
           <div style={{
-            flex: '1',
-            display: 'flex',
-            justifyContent: 'flex-end'
+            maxWidth: '520px',
+            width: '100%'
           }}>
             <div style={{
               width: '100%',
-              maxWidth: '500px',
               borderRadius: '8px',
               overflow: 'hidden',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
@@ -213,6 +332,198 @@ export default function Home() {
                 Your browser does not support the video tag.
               </video>
             </div>
+          </div>
+        </div>
+        
+        {/* Docker Course and Video Section */}
+        <div style={{
+          display: 'flex',
+          gap: '30px',
+          alignItems: 'flex-start',
+          marginBottom: '50px'
+        }}>
+          {/* Left column - Docker Course */}
+          {dockerCourse && (
+            <div style={{
+              maxWidth: '280px',
+              width: '100%'
+            }}>
+              <div className="course-card compact">
+                {/* Course Image */}
+                <div className="course-card-image">
+                  {dockerCourse.image ? (
+                    <img 
+                      src={dockerCourse.image} 
+                      alt={dockerCourse.title}
+                    />
+                  ) : (
+                    <div className="course-image-letter">
+                      <div className="text-6xl font-bold">
+                        {dockerCourse.title.charAt(0)}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Overlay */}
+                  <div className="course-card-overlay"></div>
+                  
+                  {/* Course badges */}
+                  <div className="badge-container-tl">
+                    <span className="badge badge-year-2">
+                      ปี {dockerCourse.year}
+                    </span>
+                    <span className="badge badge-semester">
+                      เทอม {dockerCourse.semester}
+                    </span>
+                  </div>
+                  
+                  {/* Difficulty badge */}
+                  <div className="badge-container-tr">
+                    <span className="badge badge-xs badge-difficulty-intermediate">
+                      ปานกลาง
+                    </span>
+                  </div>
+                </div>
+
+                {/* Course Content */}
+                <div className="course-card-content">
+                  {/* Course Title */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                    {dockerCourse.title}
+                  </h3>
+                  
+                  {/* English Title */}
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-1 font-medium">
+                    {dockerCourse.titleEn}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-500 mb-4 line-clamp-3 leading-relaxed">
+                    {dockerCourse.description}
+                  </p>
+
+                  {/* Course Info */}
+                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                    {/* ลบข้อมูล duration และ credits ออก */}
+                  </div>
+
+                  {/* Action Button */}
+                  <a href={`/courses/${dockerCourse.id}`}>
+                    <button className="w-full btn-gradient focus-ring">
+                      <span className="flex items-center justify-center">
+                        <svg className="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        เริ่มเรียน
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Center column - Docker Information */}
+          <div style={{
+            flex: '1',
+            padding: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
+          }}>
+            <h3 style={{
+              fontSize: '1.5rem',
+              fontWeight: '700',
+              color: 'var(--foreground)',
+              marginBottom: '15px',
+              textAlign: 'center'
+            }}>
+              Docker คืออะไร?
+            </h3>
+            
+            <p style={{
+              color: 'var(--foreground)',
+              fontSize: '0.95rem',
+              lineHeight: '1.6',
+              textAlign: 'justify',
+              marginBottom: '15px'
+            }}>
+              <strong>Docker</strong> เป็นแพลตฟอร์ม Containerization ที่ช่วยให้นักพัฒนาสามารถใช้ในการ:
+            </p>
+            
+            <ul style={{
+              color: 'var(--foreground)',
+              fontSize: '0.9rem',
+              lineHeight: '1.5',
+              paddingLeft: '20px',
+              marginBottom: '15px'
+            }}>
+              <li style={{ marginBottom: '8px' }}>สร้างและจัดการ Container</li>
+              <li style={{ marginBottom: '8px' }}>ประสิทธิภาพการ Deploy แอปพลิเคชัน</li>
+              <li style={{ marginBottom: '8px' }}>รันแอปในสภาพแวดล้อมเดียวกัน</li>
+              <li style={{ marginBottom: '8px' }}>จัดการ Microservices</li>
+              <li>เพิ่มประสิทธิภาพการพัฒนา</li>
+            </ul>
+            
+            <p style={{
+              color: 'var(--primary)',
+              fontSize: '0.9rem',
+              fontWeight: '600',
+              textAlign: 'center',
+              fontStyle: 'italic'
+            }}>
+              เครื่องมือสำคัญสำหรับ DevOps!
+            </p>
+          </div>
+          
+          {/* Right column - Docker Video */}
+          <div style={{
+            maxWidth: '520px',
+            width: '100%'
+          }}>
+            <div style={{
+              width: '100%',
+              borderRadius: '8px',
+              overflow: 'hidden',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+            }}>
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                style={{ 
+                  width: '100%', 
+                  height: 'auto',
+                  display: 'block'
+                }}
+              >
+                <source src="/docker_video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+        
+        {/* GitHub Information Section */}
+        <div style={{
+          display: 'flex',
+          gap: '30px',
+          alignItems: 'flex-start',
+          marginBottom: '50px'
+        }}>
+          {/* Text content about GitHub */}
+          <div style={{
+            flex: '1'
+          }}>
+            <p style={{
+              color: 'var(--foreground)',
+              fontSize: '1rem',
+              lineHeight: '1.6',
+              marginBottom: '20px'
+            }}>
+              
+            </p>
           </div>
         </div>
         

@@ -26,7 +26,18 @@ const DarkModeToggle = () => {
   };
 
   return (
-    <div className="toggle-container">
+    <div 
+      className="toggle-container"
+      style={{
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        zIndex: 1000
+      }}
+    >
+      {/* Persistent glow effect */}
+      <div className="toggle-glow"></div>
+      
       <input
         type="checkbox"
         id="dark-mode-toggle"
