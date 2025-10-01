@@ -6,17 +6,6 @@
       "use": "@vercel/next"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "build": {
-    "env": {
-      "NEXT_PUBLIC_BASE_PATH": ""
-    }
-  },
   "headers": [
     {
       "source": "/(.*)\\.(mp4|webm|ogg|flv)",
@@ -31,5 +20,10 @@
         }
       ]
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_BASE_PATH": ""
+    }
+  }
 }
