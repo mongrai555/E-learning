@@ -121,37 +121,46 @@ const CourseCard = ({ course }: CourseCardProps) => {
 
         {/* Action Button */}
         <a href={`/courses/${course.id}`}>
-          <button style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            color: 'white',
-            fontWeight: 500,
-            padding: '0.5rem 1rem',
-            borderRadius: '0.5rem',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            transform: 'translateY(0)',
-            fontSize: '0.875rem',
-            width: '100%'
-          }} 
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)';
-            e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.2)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}>
+          <button 
+            style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              fontWeight: 500,
+              padding: '0.5rem 1rem',
+              borderRadius: '0.5rem',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              transform: 'translateY(0)',
+              fontSize: '0.875rem',
+              width: '100%'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)';
+              e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
             <span style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-              <svg style={{ 
-                marginRight: '0.5rem'
-              }} fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+              <svg 
+                style={{ 
+                  marginRight: '0.5rem'
+                }} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24" 
+                width="16" 
+                height="16"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-4a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               {getStartLearningText()}

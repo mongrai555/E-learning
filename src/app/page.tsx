@@ -20,6 +20,8 @@ export default function Home() {
     const checkTheme = () => {
       const theme = document.documentElement.getAttribute('data-theme');
       setIsDarkMode(theme === 'dark');
+      // Debug: Log theme changes
+      console.log('Theme changed to:', theme);
     };
 
     // Check initial theme
@@ -177,14 +179,7 @@ export default function Home() {
   const dockerFeatures = getDockerFeatures();
 
   return (
-    <div style={{
-      minHeight: 'calc(100vh - 80px)',
-      backgroundColor: 'var(--background)',
-      padding: '0',
-      fontFamily: 'Arial, sans-serif',
-      width: '100%',
-      margin: 0
-    }}>
+    <div className="home-container">
       {/* Dark Mode Toggle */}
       <DarkModeToggle />
 
@@ -201,7 +196,7 @@ export default function Home() {
           <div style={{
             width: '100%',
             height: '100%',
-            backgroundColor: 'var(--primary)',
+            backgroundColor: 'var(--background)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -211,11 +206,11 @@ export default function Home() {
           }}>
             <div style={{
               textAlign: 'center',
-              color: 'white',
+              color: 'var(--foreground)',
               padding: '20px'
             }}>
-              <h2 style={{ fontSize: '2rem', marginBottom: '10px' }}>E-Learning Platform</h2>
-              <p>Computer Science Department</p>
+              <h2 style={{ fontSize: '2rem', marginBottom: '10px', color: 'var(--foreground)' }}>E-Learning Platform</h2>
+              <p style={{ color: 'var(--foreground)' }}>Computer Science Department</p>
             </div>
           </div>
         ) : (
@@ -339,8 +334,9 @@ export default function Home() {
         margin: '0 auto',
         padding: '40px 20px',
         width: '100%',
-        backgroundColor: 'var(--background)', // Ensure background color changes with theme
-        color: 'var(--foreground)' // Ensure text color changes with theme
+        backgroundColor: 'var(--background)',
+        color: 'var(--foreground)',
+        minHeight: 'calc(100vh - 60vh - 80px)'
       }}>
         <h2 style={{
           fontSize: '2rem',
@@ -408,22 +404,22 @@ export default function Home() {
                 {/* Course Content */}
                 <div className="course-card-content">
                   {/* Course Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2" style={{ color: 'var(--foreground)' }}>
                     {language === 'th' ? githubCourse.title : githubCourse.titleEn}
                   </h3>
                   
                   {/* English Title */}
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-1 font-medium">
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-1 font-medium" style={{ color: 'var(--foreground)' }}>
                     {language === 'th' ? githubCourse.titleEn : githubCourse.title}
                   </p>
 
                   {/* Description */}
-                  <p className="text-sm text-gray-500 mb-4 line-clamp-3 leading-relaxed">
+                  <p className="text-sm text-gray-500 mb-4 line-clamp-3 leading-relaxed" style={{ color: 'var(--foreground)' }}>
                     {githubCourse.description}
                   </p>
 
                   {/* Course Info */}
-                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4" style={{ color: 'var(--foreground)' }}>
                     {/* ลบข้อมูล duration และ credits ออก */}
                   </div>
 
@@ -541,11 +537,11 @@ export default function Home() {
                 <div style={{
                   width: '100%',
                   height: '300px',
-                  backgroundColor: '#333',
+                  backgroundColor: 'var(--secondary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'white',
+                  color: 'var(--foreground)',
                   fontSize: '1.2rem'
                 }}>
                   <div style={{ textAlign: 'center' }}>
@@ -646,7 +642,7 @@ export default function Home() {
                   </p>
 
                   {/* Course Info */}
-                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4" style={{ color: 'var(--foreground)' }}>
                     {/* ลบข้อมูล duration และ credits ออก */}
                   </div>
 
@@ -758,11 +754,11 @@ export default function Home() {
                 <div style={{
                   width: '100%',
                   height: '300px',
-                  backgroundColor: '#333',
+                  backgroundColor: 'var(--secondary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'white',
+                  color: 'var(--foreground)',
                   fontSize: '1.2rem'
                 }}>
                   <div style={{ textAlign: 'center' }}>
@@ -820,8 +816,8 @@ export default function Home() {
           borderTop: '1px solid var(--border)',
           borderBottom: '1px solid var(--border)',
           position: 'relative',
-          backgroundColor: 'var(--background)', // Ensure background color changes with theme
-          color: 'var(--foreground)' // Ensure text color changes with theme
+          backgroundColor: 'var(--background)',
+          color: 'var(--foreground)'
         }}>
           {/* Glowing effect overlay */}
           <div style={{
@@ -881,8 +877,8 @@ export default function Home() {
                       borderRadius: '4px',
                       textAlign: 'center'
                     }}>
-                      <h3>Prof. Attawit Changkamanon</h3>
-                      <p>Program Chair</p>
+                      <h3 style={{ color: 'white' }}>Prof. Attawit Changkamanon</h3>
+                      <p style={{ color: 'white' }}>Program Chair</p>
                     </div>
                   </div>
                 ) : (

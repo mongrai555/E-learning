@@ -214,93 +214,6 @@ export default function CourseDetailPage() {
               </ul>
             </div>
           )}
-          
-          {/* Video Section - Directly under Tools section */}
-          <div className="card p-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              🎥 บทเรียนวิดีโอ
-            </h2>
-            <div style={{
-              display: 'flex',
-              gap: '30px',
-              alignItems: 'flex-start',
-              flexWrap: 'wrap'
-            }}>
-              {/* Left column - Video placeholder */}
-              <div style={{
-                flex: '1',
-                minWidth: '300px'
-              }}>
-                <div style={{
-                  width: '100%',
-                  height: '300px',
-                  backgroundColor: '#f3f4f6',
-                  borderRadius: '8px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '2px dashed #d1d5db'
-                }}>
-                  <div style={{
-                    textAlign: 'center',
-                    color: '#6b7280'
-                  }}>
-                    <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🎥</div>
-                    <p>Video Player Placeholder</p>
-                    <p style={{ fontSize: '0.9rem', marginTop: '5px' }}>Video content will be added here</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Right column - Lesson parts */}
-              <div style={{
-                flex: '1',
-                minWidth: '300px'
-              }}>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  ส่วนประกอบของบทเรียน
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-blue-600 font-bold">1</span>
-                    </div>
-                    <div>
-                      <div className="font-medium">บทนำ</div>
-                      <div className="text-sm text-gray-500">10 นาที</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-blue-600 font-bold">2</span>
-                    </div>
-                    <div>
-                      <div className="font-medium">เนื้อหาหลัก</div>
-                      <div className="text-sm text-gray-500">25 นาที</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-blue-600 font-bold">3</span>
-                    </div>
-                    <div>
-                      <div className="font-medium">แบบฝึกหัด</div>
-                      <div className="text-sm text-gray-500">15 นาที</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-blue-600 font-bold">4</span>
-                    </div>
-                    <div>
-                      <div className="font-medium">แบบทดสอบ</div>
-                      <div className="text-sm text-gray-500">20 นาที</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         
         {/* Sidebar */}
@@ -320,6 +233,42 @@ export default function CourseDetailPage() {
               </div>
             </div>
           )}
+          
+          {/* Video Lessons Preview */}
+          <div className="card p-6">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              🎥 บทเรียนวิดีโอ
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-blue-600 font-bold">1</span>
+                </div>
+                <div>
+                  <div className="font-medium">บทนำ</div>
+                  <div className="text-sm text-gray-500">10 นาที</div>
+                </div>
+              </div>
+              <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-blue-600 font-bold">2</span>
+                </div>
+                <div>
+                  <div className="font-medium">เนื้อหาหลัก</div>
+                  <div className="text-sm text-gray-500">25 นาที</div>
+                </div>
+              </div>
+              <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-blue-600 font-bold">3</span>
+                </div>
+                <div>
+                  <div className="font-medium">แบบฝึกหัด</div>
+                  <div className="text-sm text-gray-500">15 นาที</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ html, body {
   --video-button-hover-bg: rgba(255, 255, 255, 0.1);
 }
 
-.dark {
+[data-theme="dark"] {
   --background: #0a0a0a;
   --foreground: #f3f4f6;
   --primary: #60a5fa;
@@ -38,7 +38,7 @@ html, body {
   --warning: #fbbf24;
   --error: #f87171;
   --border: #27272a;
-  --video-overlay: rgba(0, 0, 0, 0.6);
+  --video-overlay: rgba(0, 0, 0, 0.4);
   --video-title-color: white;
   --video-text-color: #e5e7eb;
   --video-button-color: white;
@@ -47,6 +47,10 @@ html, body {
 
 * {
   box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+html, body {
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -65,6 +69,10 @@ body {
 #__next {
   width: 100%;
   min-height: 100vh;
+  background-color: var(--background);
+  transition: background-color 0.3s, color 0.3s;
+  padding: 0;
+  margin: 0;
 }
 
 /* Video container styles */
@@ -398,9 +406,38 @@ body {
 /* Course Styling - Custom CSS3 to replace Tailwind */
 
 /* Layout & Container Styles */
+.course-detail-container {
+  min-height: 100vh;
+  background-color: var(--background);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  transition: background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-theme="dark"] .course-detail-container {
+  background-color: var(--background);
+}
+
+.home-container {
+  min-height: 100vh;
+  background-color: var(--background);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .home-container {
+  background-color: var(--background);
+}
+
 .courses-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background-color: var(--background);
   padding: 0;
   margin: 0;
   width: 100%;
@@ -408,7 +445,7 @@ body {
 }
 
 [data-theme="dark"] .courses-container {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background-color: var(--background);
 }
 
 .courses-wrapper {
@@ -423,6 +460,11 @@ body {
   margin: 0;
   padding: 1rem;
   width: 100%;
+  background-color: var(--background);
+}
+
+[data-theme="dark"] .course-detail-wrapper {
+  background-color: var(--background);
 }
 
 /* Card Styles */
@@ -432,6 +474,7 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   overflow: hidden;
+  width: 100%;
 }
 
 [data-theme="dark"] .card {
@@ -462,6 +505,7 @@ body {
   overflow: hidden;
   transition: all 0.3s ease;
   position: relative;
+  width: 100%;
 }
 
 [data-theme="dark"] .course-card {
@@ -669,6 +713,10 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 @media (min-width: 1024px) {
@@ -808,6 +856,10 @@ body {
   transition: all 0.2s ease;
   transform: translateY(0);
   font-size: 1.125rem;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
 }
 
 .btn-gradient:hover {
@@ -917,6 +969,7 @@ body {
   font-size: 0.875rem;
   color: #6b7280;
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .breadcrumb a {
@@ -1049,12 +1102,47 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
   }
-  50% {
-    opacity: 0.5;
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
   }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.course-detail-container {
+  min-height: 100vh;
+  background-color: var(--background);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  transition: background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-theme="dark"] .course-detail-container {
+  background-color: var(--background);
+}
+
+.home-container {
+  min-height: 100vh;
+  background-color: var(--background);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .home-container {
+  background-color: var(--background);
 }
 
 /* Ensure proper theme initialization */
