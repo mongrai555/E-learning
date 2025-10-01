@@ -1,19 +1,15 @@
 'use client';
 
-import { notFound } from 'next/navigation';
+import React from 'react';
+import { notFound, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { curriculum } from '@/data/curriculum';
 import { useLanguage } from '@/contexts/LanguageContext';
 import DarkModeToggle from '@/components/DarkModeToggle';
 
-interface CourseDetailPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function CourseDetailPage({ params }: CourseDetailPageProps) {
+export default function CourseDetailPage() {
   const { language } = useLanguage();
+  const params = useParams();
   const course = curriculum.find(c => c.id === params.id);
 
   if (!course) {
