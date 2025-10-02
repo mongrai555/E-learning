@@ -30,25 +30,20 @@ export default function LoginPage() {
       alignItems: 'center',
       padding: '20px'
     }}>
-      {/* Video Background */}
-      <video 
-        autoPlay 
-        loop 
-        muted 
-        playsInline
+      {/* Image Background */}
+      <div 
         style={{ 
           position: 'absolute',
           top: 0,
           left: 0,
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
+          backgroundImage: 'url("/minimalroom.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
           zIndex: -1
         }}
-      >
-        <source src="/BGlogin.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      ></div>
       
       {/* Lighter overlay for better text readability */}
       <div style={{
@@ -145,7 +140,8 @@ export default function LoginPage() {
                 }}
                 placeholder="mjuxxxxxx@mju.ac.th"
                 onFocus={(e) => e.target.style.borderColor = '#2563eb'}
-                onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                onBlur={(e) => e.target.style.borderColor = '#d1d5db'
+                }
               />
             </div>
           </div>

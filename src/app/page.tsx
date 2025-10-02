@@ -80,7 +80,7 @@ export default function Home() {
   };
 
   const getRecommendedTitle = () => {
-    return language === 'th' ? 'คอร์สที่แนะนำและจำเป็นต่อการทำงาน Github!' : 'Recommended and Essential Courses for GitHub Work!';
+    return language === 'th' ? 'คอร์สที่แนะนำและจำเป็นต่อการทำงาน Github and Docker!' : 'Recommended and Essential Courses for GitHub and Docker Work!';
   };
 
   const getGithubTitle = () => {
