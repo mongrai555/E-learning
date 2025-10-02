@@ -57,7 +57,7 @@ src/
 
 // ส่วนพื้นหลังวิดีโอ
 <video autoPlay loop muted playsInline>
-  <source src="/bg_video.mp4" type="video/mp4" />
+  <source src="/bg_video1.mp4" type="video/mp4" />
 </video>
 
 // เนื้อหาแบบไดนามิกตามบริบทภาษา

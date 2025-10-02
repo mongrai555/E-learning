@@ -227,7 +227,7 @@ export default function Home() {
             }}
             onError={() => handleVideoError('bg')}
           >
-            <source src="/bg_video.mp4" type="video/mp4" />
+            <source src="/bg_video1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         )}
@@ -563,7 +563,7 @@ export default function Home() {
                   }}
                   onError={() => handleVideoError('github')}
                 >
-                  <source src="/github_video.mp4" type="video/mp4" />
+                  <source src="/github_video1.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               )}

@@ -57,7 +57,7 @@ src/
 
 // Video background section
 <video autoPlay loop muted playsInline>
-  <source src="/bg_video.mp4" type="video/mp4" />
+  <source src="/bg_video1.mp4" type="video/mp4" />
 </video>
 
 // Dynamic content based on language context

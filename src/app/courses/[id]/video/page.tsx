@@ -249,7 +249,7 @@ export default function VideoPlayerPage() {
                 controls={false}
               >
                 {/* We'll use a sample video for now */}
-                <source src="/github_video.mp4" type="video/mp4" />
+                <source src="/github_video1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               
