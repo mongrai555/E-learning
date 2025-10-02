@@ -12,6 +12,59 @@ export default function VideoPlayerPage() {
   const courseId = params.id;
   const course = curriculum.find(c => c.id === courseId);
   
+  // Define which courses should use the janjo.mp4 video
+  const coursesWithJanjoVideo = [
+    'relational-db',     // ฐานข้อมูลโครงสร้างเชิงสัมพันธ์
+    'figma-course',      // Figma และการออกแบบ UI/UX
+    'html-css-course',   // HTML5 และ CSS3
+    'tailwind-course',   // Tailwind CSS Framework
+    'javascript-course', // JavaScript
+    'react-course',      // React และการพัฒนา Frontend
+    'nextjs-course'      // Next.js และ Full-Stack Development
+  ];
+  
+  // Define which courses should use the janohm.mp4 video
+  const coursesWithJanohmVideo = [
+    'ict',              // เทคโนโลยีสารสนเทศและการสื่อสาร
+    'data-structure'    // โครงสร้างข้อมูลและอัลกอริทึม
+  ];
+  
+  // Define which courses should use the SEjan.mp4 video
+  const coursesWithSEjanVideo = [
+    'postman-course',    // Postman และการทดสอบ API
+    'playwright-course', // Playwright และการทดสอบอัตโนมัติ
+    'docker-course',     // Docker และ Containerization
+    'github-course'      // GitHub และการควบคุมเวอร์ชั่น
+  ];
+  
+  // Define which courses should use the Janoof.mp4 video (note capital J)
+  const coursesWithJanoofVideo = [
+    'computer-org',      // องค์ประกอบและสถาปัตยกรรมคอมพิวเตอร์
+    'prog-fundamentals'  // การเขียนโปรแกรมเบื้องต้น
+  ];
+  
+  // Define which courses should use the janpat.mp4 video
+  const coursesWithJanpatVideo = [
+    'prog-problem-solving' // การเขียนโปรแกรมและทักษะการแก้ปัญหา
+  ];
+  
+  // Get the appropriate video source based on course
+  const getVideoSource = () => {
+    if (coursesWithJanjoVideo.includes(courseId as string)) {
+      return '/janjo.mp4';
+    } else if (coursesWithJanohmVideo.includes(courseId as string)) {
+      return '/janohm.mp4';
+    } else if (coursesWithSEjanVideo.includes(courseId as string)) {
+      return '/SEjan.mp4';
+    } else if (coursesWithJanoofVideo.includes(courseId as string)) {
+      return '/Janoof.mp4';
+    } else if (coursesWithJanpatVideo.includes(courseId as string)) {
+      return '/janpat.mp4';
+    }
+    // Default video for other courses
+    return '/github_video1.mp4';
+  };
+  
   // Get lesson parts based on course topics
   const getLessonParts = () => {
     if (!course) return [];
@@ -47,6 +100,8 @@ export default function VideoPlayerPage() {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  // State for mobile sidebar visibility
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   // Get translated text functions
   const getBackToCourseText = () => {
@@ -75,6 +130,22 @@ export default function VideoPlayerPage() {
   
   const getNextLessonText = () => {
     return language === 'th' ? 'บทถัดไป' : 'Next Lesson';
+  };
+  
+  const getCourseContentText = () => {
+    return language === 'th' ? 'เนื้อหาคอร์ส' : 'Course Content';
+  };
+  
+  const getProgressText = () => {
+    return language === 'th' ? 'ความคืบหน้า' : 'Progress';
+  };
+  
+  const getOverallProgressText = () => {
+    return language === 'th' ? 'ความคืบหน้าโดยรวม' : 'Overall Progress';
+  };
+  
+  const getThisPartText = () => {
+    return language === 'th' ? 'พาร์ทนี้' : 'This Part';
   };
   
   // Video controls functions
@@ -159,6 +230,9 @@ export default function VideoPlayerPage() {
     );
   }
   
+  // Get the video source for this course
+  const videoSource = getVideoSource();
+  
   return (
     <div className="video-player-container" style={{
       minHeight: '100vh',
@@ -198,11 +272,31 @@ export default function VideoPlayerPage() {
           textAlign: 'center',
           flex: 1,
           margin: '0 20px',
-          color: '#fff'
+          color: '#fff',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap'
         }}>
           {language === 'th' ? course.title : course.titleEn}
         </h1>
-        <div style={{ width: '100px' }}></div> {/* Spacer for alignment */}
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          style={{
+            backgroundColor: 'transparent',
+            border: 'none',
+            color: '#fff',
+            cursor: 'pointer',
+            display: 'none', // Hidden on desktop
+            padding: '8px'
+          }}
+          className="md-hidden"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M3 12h18M3 6h18M3 18h18" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        </button>
+        <div style={{ width: '100px' }} className="md-hidden"></div> {/* Spacer for alignment on mobile */}
       </div>
       
       {/* Main Content Area */}
@@ -210,7 +304,7 @@ export default function VideoPlayerPage() {
         display: 'flex',
         flex: 1,
         overflow: 'hidden'
-      }}>
+      }} className="video-main-content">
         {/* Video Content - Left Side */}
         <div style={{
           flex: 1,
@@ -218,7 +312,7 @@ export default function VideoPlayerPage() {
           flexDirection: 'column',
           backgroundColor: '#000',
           position: 'relative'
-        }}>
+        }} className="video-content">
           {/* Video Player Area */}
           <div style={{
             flex: 1,
@@ -248,8 +342,8 @@ export default function VideoPlayerPage() {
                 onPause={() => setIsPlaying(false)}
                 controls={false}
               >
-                {/* We'll use a sample video for now */}
-                <source src="/github_video1.mp4" type="video/mp4" />
+                {/* Use the appropriate video source based on course */}
+                <source src={videoSource} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               
@@ -351,7 +445,7 @@ export default function VideoPlayerPage() {
                   </div>
                   
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <span style={{ fontSize: '0.875rem', color: '#fff' }}>
+                    <span style={{ fontSize: '0.875rem', color: '#fff' }} className="video-lesson-info">
                       {videoLesson.title} ({videoLesson.duration})
                     </span>
                     <button
@@ -373,7 +467,7 @@ export default function VideoPlayerPage() {
                           : "M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
                         } fill="#fff" />
                       </svg>
-                      {isFullscreen ? getExitFullscreenText() : getFullscreenText()}
+                      <span className="fullscreen-text">{isFullscreen ? getExitFullscreenText() : getFullscreenText()}</span>
                     </button>
                   </div>
                 </div>
@@ -423,27 +517,54 @@ export default function VideoPlayerPage() {
           </div>
         </div>
         
-        {/* Lesson Parts Sidebar - Right Side */}
-        <div style={{
-          width: '300px',
-          backgroundColor: 'var(--background)',
-          borderLeft: '1px solid var(--border)',
-          display: 'flex',
-          flexDirection: 'column',
-          color: 'var(--foreground)'
-        }}>
+        {/* Lesson Parts Sidebar - Right Side (Hidden on mobile by default) */}
+        <div 
+          style={{
+            width: '300px',
+            backgroundColor: 'var(--background)',
+            borderLeft: '1px solid var(--border)',
+            display: 'flex',
+            flexDirection: 'column',
+            color: 'var(--foreground)'
+          }} 
+          className={`lesson-sidebar ${isSidebarOpen ? 'mobile-visible' : ''}`}
+        >
           <div style={{
             padding: '20px',
             borderBottom: '1px solid var(--border)'
           }}>
-            <h3 style={{
-              fontSize: '1.25rem',
-              fontWeight: '700',
-              marginBottom: '16px',
-              color: 'var(--foreground)'
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '16px'
             }}>
-              {language === 'th' ? 'เนื้อหาคอร์ส' : 'Course Content'}
-            </h3>
+              <h3 style={{
+                fontSize: '1.25rem',
+                fontWeight: '700',
+                color: 'var(--foreground)',
+                margin: 0
+              }}>
+                {getCourseContentText()}
+              </h3>
+              {/* Close button for mobile */}
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                style={{
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  color: 'var(--foreground)',
+                  cursor: 'pointer',
+                  display: 'none', // Hidden on desktop
+                  padding: '4px'
+                }}
+                className="md-hidden"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M6 18L18 6M6 6l12 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
             
             <div style={{ 
               display: 'flex', 
@@ -554,7 +675,7 @@ export default function VideoPlayerPage() {
               marginBottom: '16px',
               color: 'var(--foreground)'
             }}>
-              {language === 'th' ? 'ความคืบหน้า' : 'Progress'}
+              {getProgressText()}
             </h4>
             
             <div style={{ marginBottom: '16px' }}>
@@ -565,7 +686,7 @@ export default function VideoPlayerPage() {
                 color: 'var(--foreground)',
                 marginBottom: '4px'
               }}>
-                <span>{language === 'th' ? 'ความคืบหน้าโดยรวม' : 'Overall Progress'}</span>
+                <span>{getOverallProgressText()}</span>
                 <span>25%</span>
               </div>
               <div style={{
@@ -592,7 +713,7 @@ export default function VideoPlayerPage() {
                 color: 'var(--foreground)',
                 marginBottom: '4px'
               }}>
-                <span>{language === 'th' ? 'พาร์ทนี้' : 'This Part'}</span>
+                <span>{getThisPartText()}</span>
                 <span>0%</span>
               </div>
               <div style={{
@@ -613,6 +734,148 @@ export default function VideoPlayerPage() {
           </div>
         </div>
       </div>
+      
+      {/* Mobile sidebar overlay */}
+      {isSidebarOpen && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 999
+          }}
+          className="md-hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
+      )}
+      
+      <style jsx global>{`
+        /* Responsive styles for mobile */
+        @media (max-width: 767px) {
+          .video-main-content {
+            flex-direction: column;
+          }
+          
+          .video-content {
+            width: 100%;
+          }
+          
+          .lesson-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            height: 100vh;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            width: 300px;
+            overflow-y: auto;
+          }
+          
+          .lesson-sidebar.mobile-visible {
+            right: 0;
+          }
+          
+          .video-lesson-info {
+            display: none;
+          }
+          
+          .fullscreen-text {
+            display: none;
+          }
+          
+          .md-hidden {
+            display: block !important;
+          }
+          
+          /* Adjust video player for mobile */
+          .video-player-container video {
+            max-height: 50vh;
+          }
+          
+          /* Adjust header for mobile */
+          .video-player-container h1 {
+            font-size: 1rem;
+          }
+          
+          /* Adjust video info section for mobile */
+          .video-content > div:last-child {
+            padding: 16px;
+          }
+          
+          .video-content > div:last-child h2 {
+            font-size: 1.25rem;
+          }
+          
+          .video-content > div:last-child p {
+            font-size: 0.875rem;
+          }
+          
+          /* Adjust video controls for mobile */
+          .video-controls-overlay {
+            padding: 12px;
+          }
+          
+          .video-controls-overlay > div:first-child {
+            gap: 8px;
+          }
+          
+          .video-controls-overlay > div:first-child span {
+            font-size: 0.75rem;
+            min-width: 30px;
+          }
+          
+          .video-controls-overlay > div:last-child {
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-start;
+          }
+          
+          .video-controls-overlay > div:last-child > div:first-child,
+          .video-controls-overlay > div:last-child > div:last-child {
+            width: 100%;
+            justify-content: space-between;
+          }
+          
+          .video-controls-overlay button {
+            font-size: 0.75rem;
+            gap: 4px;
+          }
+          
+          .video-controls-overlay input[type="range"] {
+            width: 100px;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .md-hidden {
+            display: none !important;
+          }
+        }
+        
+        /* Ensure proper scrolling on mobile */
+        .lesson-sidebar {
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Improve touch targets for mobile */
+        @media (max-width: 767px) {
+          .lesson-sidebar div[style*="padding: 12px"] {
+            padding: 16px !important;
+          }
+          
+          .lesson-sidebar span[style*="font-size: 0.875rem"] {
+            font-size: 1rem !important;
+          }
+          
+          .lesson-sidebar span[style*="font-size: 0.75rem"] {
+            font-size: 0.875rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
