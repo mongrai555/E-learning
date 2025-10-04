@@ -355,13 +355,13 @@ export default function Home() {
           alignItems: 'flex-start',
           marginBottom: '50px',
           flexWrap: 'wrap'
-        }}>
+        }} className="github-section">
           {/* Left column - GitHub Course */}
           {githubCourse && (
             <div style={{
               maxWidth: '280px',
               width: '100%'
-            }}>
+            }} className="github-course">
               <div className="course-card compact">
                 {/* Course Image */}
                 <div className="course-card-image">
@@ -475,7 +475,7 @@ export default function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             minWidth: '300px'
-          }}>
+          }} className="github-info">
             <h3 style={{
               fontSize: '1.5rem',
               fontWeight: '700',
@@ -525,7 +525,7 @@ export default function Home() {
           <div style={{
             maxWidth: '520px',
             width: '100%'
-          }}>
+          }} className="github-video">
             <div style={{
               width: '100%',
               borderRadius: '8px',
@@ -578,13 +578,13 @@ export default function Home() {
           alignItems: 'flex-start',
           marginBottom: '50px',
           flexWrap: 'wrap'
-        }}>
+        }} className="docker-section">
           {/* Left column - Docker Course */}
           {dockerCourse && (
             <div style={{
               maxWidth: '280px',
               width: '100%'
-            }}>
+            }} className="docker-course">
               <div className="course-card compact">
                 {/* Course Image */}
                 <div className="course-card-image">
@@ -692,7 +692,7 @@ export default function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             minWidth: '300px'
-          }}>
+          }} className="docker-info">
             <h3 style={{
               fontSize: '1.5rem',
               fontWeight: '700',
@@ -742,7 +742,7 @@ export default function Home() {
           <div style={{
             maxWidth: '520px',
             width: '100%'
-          }}>
+          }} className="docker-video">
             <div style={{
               width: '100%',
               borderRadius: '8px',
@@ -818,7 +818,7 @@ export default function Home() {
           position: 'relative',
           backgroundColor: 'var(--background)',
           color: 'var(--foreground)'
-        }}>
+        }} className="profile-section">
           {/* Glowing effect overlay */}
           <div style={{
             position: 'absolute',
@@ -842,14 +842,14 @@ export default function Home() {
             margin: '0 auto',
             padding: '0 20px',
             flexWrap: 'wrap'
-          }}>
+          }} className="profile-content">
             {/* Left column - Profile video */}
             <div style={{
               flex: '1',
               display: 'flex',
               justifyContent: 'flex-start',
               minWidth: '300px'
-            }}>
+            }} className="profile-video">
               <div style={{
                 width: '100%',
                 maxWidth: '500px',
@@ -905,7 +905,7 @@ export default function Home() {
             <div style={{
               flex: '1',
               minWidth: '300px'
-            }}>
+            }} className="profile-info">
               <h3 style={{
                 fontSize: '1.5rem',
                 fontWeight: '700',
@@ -997,6 +997,97 @@ export default function Home() {
           
           .video-section {
             height: 40vh;
+          }
+          
+          .github-section,
+          .docker-section {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+          }
+          
+          .github-course,
+          .docker-course,
+          .github-info,
+          .docker-info,
+          .github-video,
+          .docker-video {
+            max-width: 100%;
+            width: 100%;
+            padding: 0;
+          }
+          
+          .github-info,
+          .docker-info {
+            padding: 20px 0;
+            text-align: center;
+          }
+          
+          .github-video,
+          .docker-video {
+            max-width: 100%;
+          }
+          
+          .profile-content {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+          }
+          
+          .profile-video,
+          .profile-info {
+            width: 100%;
+            min-width: unset;
+            text-align: center;
+          }
+          
+          .profile-video > div {
+            max-width: 100%;
+          }
+          
+          ul {
+            padding-left: 0;
+            text-align: left;
+          }
+          
+          .home-container {
+            padding: 0 10px;
+          }
+          
+          .home-container > div {
+            padding: 20px 10px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          h1 {
+            font-size: 1.5rem;
+            line-height: 1.3;
+          }
+          
+          h2 {
+            font-size: 1.25rem;
+          }
+          
+          h3 {
+            font-size: 1.25rem;
+          }
+          
+          p {
+            font-size: 0.9rem;
+          }
+          
+          .video-section {
+            height: 30vh;
+          }
+          
+          .github-section,
+          .docker-section {
+            gap: 15px;
+          }
+          
+          .profile-content {
+            gap: 15px;
           }
         }
       `}</style>

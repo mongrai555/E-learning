@@ -240,6 +240,38 @@ body {
   }
 }
 
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .grid {
+    gap: 12px;
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .window-content {
+    padding: 16px;
+  }
+  
+  .btn {
+    padding: 10px 16px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .window-content {
+    padding: 12px;
+  }
+  
+  .btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
 /* Dark mode toggle switch */
 .toggle-container {
   display: inline-block;
@@ -1170,4 +1202,123 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 0;
+  }
+  
+  .home-container > div {
+    padding: 20px 15px;
+  }
+  
+  .course-card.compact {
+    max-width: 100%;
+  }
+  
+  .course-card.compact .course-card-image {
+    height: 10rem;
+  }
+  
+  .text-6xl {
+    font-size: 2.5rem;
+  }
+  
+  .text-4xl {
+    font-size: 1.875rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+  
+  .gap-8 {
+    gap: 1rem;
+  }
+  
+  .gap-6 {
+    gap: 0.75rem;
+  }
+  
+  .p-8 {
+    padding: 1rem;
+  }
+  
+  .p-6 {
+    padding: 0.75rem;
+  }
+  
+  .py-16 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .mb-12 {
+    margin-bottom: 2rem;
+  }
+  
+  .mb-8 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mb-6 {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container > div {
+    padding: 15px 10px;
+  }
+  
+  .course-card.compact .course-card-image {
+    height: 8rem;
+  }
+  
+  .text-6xl {
+    font-size: 2rem;
+  }
+  
+  .text-4xl {
+    font-size: 1.5rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.25rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.125rem;
+  }
+  
+  .text-xl {
+    font-size: 1rem;
+  }
+  
+  .p-8 {
+    padding: 0.75rem;
+  }
+  
+  .py-16 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .mb-12 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mb-8 {
+    margin-bottom: 1rem;
+  }
+  
+  .gap-8 {
+    gap: 0.75rem;
+  }
 }
