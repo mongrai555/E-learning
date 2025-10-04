@@ -148,11 +148,11 @@ export default function Home() {
   };
 
   const getProfessorTitle = () => {
-    return language === 'th' ? 'ประธานหลักสูตร ศาสตราจารย์ อำนาจ จันทึกมานนท์' : 'Program Chair Prof. Attawit Changkamanon';
+    return language === 'th' ? 'ประธานหลักสูตร ศาสตราจารย์ อรรถวิท ชังคมานนท์' : 'Program Chair Prof. Athawit Changkomnan';
   };
 
   const getProfessorName = () => {
-    return language === 'th' ? 'อำนาจ จันทึกมานนท์' : 'Attawit Changkamanon';
+    return language === 'th' ? 'อรรถวิท ชังคมานนท์' : 'Athawit Changkomnan';
   };
 
   const getEducationTitle = () => {

@@ -14,7 +14,7 @@ const courses = [
     students: 45,
     status: "active",
     progress: 75,
-    instructor: "ดร. สมชาย ใจดี",
+    instructor: "อ. อรรถวิท ชังคมานนท์",
     lastUpdate: "2023-10-15"
   },
   {
@@ -25,7 +25,7 @@ const courses = [
     students: 38,
     status: "active",
     progress: 60,
-    instructor: "ผศ. สมศรี รักเรียน",
+    instructor: "อ. อรรถวิท ชังคมานนท์",
     lastUpdate: "2023-10-10"
   },
   {
@@ -36,7 +36,7 @@ const courses = [
     students: 52,
     status: "inactive",
     progress: 0,
-    instructor: "รศ. สมหมาย ปัญญา",
+    instructor: "ผศ.ดร. ปวีณ เขื่อนแก้ว",
     lastUpdate: "2023-09-20"
   }
 ];
@@ -45,24 +45,38 @@ const courses = [
 const users = [
   {
     id: "1",
-    name: "นักเรียน ดีเด่น",
-    email: "student1@example.com",
+    name: "นายณัฐดนัย ปู่วงษ์",
+    email: "mju6704101323@mju.ac.th",
     role: "student",
     status: "active"
   },
   {
     id: "2",
-    name: "อาจารย์ ผู้สอน",
-    email: "teacher1@mju.ac.th",
-    role: "teacher",
+    name: "นางสาวกาญจณา ประทาน",
+    email: "mju6704101390@mju.ac.th",
+    role: "student",
     status: "active"
   },
   {
     id: "3",
-    name: "นักเรียน ขยัน",
-    email: "student2@example.com",
+    name: "นาย เขมโสภณ วงศ์นฤเดชากุล",
+    email: "mju6704101312@mju.ac.th",
     role: "student",
-    status: "inactive"
+    status: "active"
+  },
+  {
+    id: "4",
+    name: "นางสาว กฤษณา โพธา",
+    email: "mju6704101304@mju.ac.th",
+    role: "student",
+    status: "active"
+  },
+  {
+    id: "5",
+    name: "นางสาวพิมลภัทร หอจงกล",
+    email: "mju6704101361@mju.ac.th",
+    role: "student",
+    status: "active"
   }
 ];
 
