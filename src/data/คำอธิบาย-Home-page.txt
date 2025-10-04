@@ -1,0 +1,80 @@
+# คำอธิบาย Home Page (หน้าแรก)
+
+## โครงสร้างและการทำงานของหน้า Home Page
+
+หน้า Home Page เป็นหน้าแรกของเว็บไซต์ E-learning ซึ่งมีหน้าที่สำคัญในการแนะนำเว็บไซต์และดึงดูดผู้ใช้งานให้เข้าสู่ระบบเรียนรู้ โดยมีโครงสร้างที่ออกแบบมาให้แสดงเนื้อหาที่สำคัญอย่างชัดเจน
+
+### โครงสร้างหลักของ Home Page
+
+1. **ส่วนหัวเว็บ (Header Section)**
+   - มีวิดีโอพื้นหลังที่แสดงภาพรวมของเว็บไซต์
+   - ข้อความแนะนำเว็บไซต์ E-learning สำหรับสาขาวิทยาการคอมพิวเตอร์
+   - ปุ่มทักษะที่ผู้เรียนจะได้รับจากการเรียน
+
+2. **ส่วนแนะนำคอร์ส (Course Recommendation Section)**
+   - แนะนำคอร์สที่สำคัญ เช่น GitHub และ Docker
+   - มีวิดีโอสาธิตประกอบแต่ละคอร์ส
+   - แสดงข้อมูลพื้นฐานของคอร์ส
+
+3. **ส่วนข้อมูลอาจารย์ (Professor Information Section)**
+   - แสดงข้อมูลของประธานหลักสูตร
+   - วิดีโอแนะนำตัวจากอาจารย์
+
+### การทำงานของ Home Page
+
+1. **การโหลดหน้าเว็บ**
+   - เมื่อผู้ใช้เข้าสู่เว็บไซต์ ระบบจะโหลดหน้า [page.tsx](file:///c:/Users/Earth/Desktop/CSMJU_Elearning/csmju-learning/src/app/page.tsx) ซึ่งเป็นหน้า Home Page
+   - ตรวจสอบสถานะของธีม (Theme) ว่าเป็นแบบ Dark หรือ Light
+   - โหลดข้อมูลคอร์สจาก [curriculum.ts](file:///c:/Users/Earth/Desktop/CSMJU_Elearning/csmju-learning/src/data/curriculum.ts)
+
+2. **การแสดงผลเนื้อหา**
+   - แสดงวิดีโอพื้นหลังที่มีการควบคุมแบบ Loop
+   - แสดงข้อความแนะนำเว็บไซต์ในภาษาไทยหรืออังกฤษตามการตั้งค่าภาษา
+   - แสดงปุ่มทักษะที่สามารถคลิกได้
+
+3. **การจัดการภาษา**
+   - ใช้ [LanguageContext.tsx](file:///c:/Users/Earth/Desktop/CSMJU_Elearning/csmju-learning/src/contexts/LanguageContext.tsx) ในการจัดการการแปลภาษา
+   - ข้อความทั้งหมดจะเปลี่ยนภาษาตามการตั้งค่าของผู้ใช้
+
+### การตกแต่งด้วย CSS
+
+1. **การใช้ CSS Variables**
+   - ใช้ CSS Variables ในการจัดการสีของธีม เช่น `--background`, `--foreground`, `--primary`
+   - รองรับทั้งธีม Light และ Dark
+
+2. **การจัด Layout**
+   - ใช้ Flexbox และ CSS Grid ในการจัดวางองค์ประกอบ
+   - รองรับ Responsive Design สำหรับทุกขนาดหน้าจอ
+
+3. **Animation และ Effects**
+   - มี Animation แบบ Hover สำหรับปุ่มต่างๆ
+   - มี Glowing Effect สำหรับส่วนต่างๆ ของเว็บไซต์
+
+### เทคโนโลยีที่ใช้
+
+1. **Next.js 15**
+   - ใช้ App Router สำหรับการจัดการ Route
+   - ใช้ Server Components และ Client Components อย่างเหมาะสม
+
+2. **React 19**
+   - ใช้ Hooks ต่างๆ เช่น useState, useEffect ในการจัดการ State
+   - ใช้ Context API สำหรับการจัดการภาษา
+
+3. **CSS3**
+   - ใช้ CSS Variables สำหรับ Theme
+   - ใช้ Flexbox และ Grid สำหรับ Layout
+   - ใช้ Animation และ Transition สำหรับ Effects
+
+### ประโยชน์ของการใช้ TypeScript
+
+1. **Type Safety**
+   - ช่วยป้องกันข้อผิดพลาดในการพัฒนา
+   - ทำให้โค้ดอ่านเข้าใจง่ายขึ้น
+
+2. **IntelliSense**
+   - ช่วยในการพัฒนาด้วยการแนะนำโค้ดอัตโนมัติ
+   - ลดเวลาในการพัฒนา
+
+3. **การบำรุงรักษา**
+   - ทำให้โค้ดมีโครงสร้างที่ชัดเจน
+   - ง่ายต่อการปรับปรุงและแก้ไขในอนาคต

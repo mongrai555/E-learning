@@ -574,35 +574,35 @@ export const curriculum: CourseContent[] = [
   },
   {
     id: 'html-css-course',
-    title: 'HTML5 และ CSS3',
-    titleEn: 'HTML5 and CSS3',
+    title: 'HTML และ CSS',
+    titleEn: 'HTML and CSS',
     year: 2,
     semester: 1,
-    description: 'เรียนรู้พื้นฐานการสร้างเว็บไซต์ด้วย HTML5 และการจัดรูปแบบด้วย CSS3',
-    descriptionEn: 'Learn the basics of creating websites with HTML5 and styling with CSS3',
-    fullDescription: 'ศึกษาการใช้งาน HTML5 สำหรับการสร้างโครงสร้างเว็บไซต์ และ CSS3 สำหรับการจัดรูปแบบและ Responsive Design',
-    fullDescriptionEn: 'Study using HTML5 for creating website structure and CSS3 for styling and responsive design.',
+    description: 'เรียนรู้พื้นฐานการสร้างเว็บไซต์ด้วย HTML และการจัดรูปแบบด้วย CSS',
+    descriptionEn: 'Learn the basics of creating websites with HTML and styling with CSS',
+    fullDescription: 'ศึกษาการใช้งาน HTML สำหรับการสร้างโครงสร้างเว็บไซต์ และ CSS สำหรับการจัดรูปแบบและ Responsive Design',
+    fullDescriptionEn: 'Study using HTML for creating website structure and CSS for styling and responsive design.',
     objectives: [
-      'เข้าใจโครงสร้าง HTML5 และ Semantic Elements',
-      'ใช้ CSS3 ในการจัดรูปแบบและ Layout ได้',
+      'เข้าใจโครงสร้าง HTML และ Semantic Elements',
+      'ใช้ CSS ในการจัดรูปแบบและ Layout ได้',
       'สร้างเว็บไซต์ที่ Responsive ได้'
     ],
     objectivesEn: [
-      'Understand HTML5 structure and Semantic Elements',
-      'Use CSS3 for styling and layout',
+      'Understand HTML structure and Semantic Elements',
+      'Use CSS for styling and layout',
       'Create responsive websites'
     ],
     topics: [
-      'HTML5 Semantic Elements',
-      'CSS3 Selectors และ Properties',
+      'HTML Semantic Elements',
+      'CSS Selectors และ Properties',
       'Flexbox และ Grid Layout',
       'Responsive Design',
       'CSS Animations และ Transitions',
       'Modern CSS Techniques'
     ],
     topicsEn: [
-      'HTML5 Semantic Elements',
-      'CSS3 Selectors and Properties',
+      'HTML Semantic Elements',
+      'CSS Selectors and Properties',
       'Flexbox and Grid Layout',
       'Responsive Design',
       'CSS Animations and Transitions',
@@ -659,7 +659,7 @@ export const curriculum: CourseContent[] = [
     credits: 1,
     duration: '4',
     difficulty: 'intermediate',
-    prerequisites: ['HTML5 และ CSS3'],
+    prerequisites: ['HTML และ CSS'],
     image: '/tailwind_p.png'
   },
   {
