@@ -8,10 +8,26 @@ export default function LoginPage() {
   const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // ตรวจสอบเงื่อนไขอีเมลต้องมี @
+    if (!email.includes("@")) {
+      setError(t('login.email') + " ต้องมี @");
+      return;
+    }
+    
+    // ตรวจสอบเงื่อนไขรหัสผ่านต้องมีอย่างน้อย 12 ตัวอักษร
+    if (password.length < 12) {
+      setError(t('login.password') + " ต้องมีอย่างน้อย 12 ตัวอักษร");
+      return;
+    }
+    
+    // ถ้าผ่านเงื่อนไขทั้งหมด ให้ล็อกอิน
+    setError("");
     
     // Set the login status and redirect to home page
     localStorage.setItem("isLoggedIn", "true");
@@ -97,6 +113,21 @@ export default function LoginPage() {
             {t('login.description')}
           </p>
         </div>
+        
+        {/* แสดงข้อผิดพลาด */}
+        {error && (
+          <div style={{
+            backgroundColor: '#fee',
+            border: '1px solid #fecaca',
+            color: '#b91c1c',
+            padding: '12px',
+            borderRadius: '6px',
+            marginBottom: '20px',
+            fontSize: '0.9rem'
+          }}>
+            {error}
+          </div>
+        )}
         
         <form onSubmit={handleLogin}>
           <div style={{ marginBottom: '24px' }}>
