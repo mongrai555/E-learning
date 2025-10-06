@@ -110,7 +110,6 @@ export const curriculum: CourseContent[] = [
     ],
     tools: [
       { name: 'Microsoft Office', type: 'tool', description: 'ชุดโปรแกรมสำนักงาน', descriptionEn: 'Office software suite' },
-      { name: 'Google Workspace', type: 'platform', description: 'แพลตฟอร์มการทำงานออนไลน์', descriptionEn: 'Online workspace platform' },
       { name: 'Web Browser', type: 'tool', description: 'เว็บเบราว์เซอร์', descriptionEn: 'Web browser' }
     ],
     credits: 3,
@@ -290,8 +289,8 @@ export const curriculum: CourseContent[] = [
     ],
     tools: [
       { name: 'C++', type: 'language', description: 'ภาษาโปรแกรมมิ่ง', descriptionEn: 'Programming language' },
-      { name: 'Python', type: 'language', description: 'ภาษาโปรแกรมมิ่ง', descriptionEn: 'Programming language' },
-      { name: 'Algorithm Visualizer', type: 'tool', description: 'เครื่องมือแสดงผลอัลกอริทึม', descriptionEn: 'Algorithm visualization tool' }
+      { name: 'Algorithm Visualizer', type: 'tool', description: 'เครื่องมือแสดงผลอัลกอริทึม', descriptionEn: 'Algorithm visualization tool' },
+      { name: 'QT Creator', type: 'tool', description: 'IDE สำหรับการพัฒนาแอปพลิเคชันด้วย C++', descriptionEn: 'IDE for C++ application development' }
     ],
     credits: 3,
     duration: '15',
@@ -337,8 +336,8 @@ export const curriculum: CourseContent[] = [
     ],
     tools: [
       { name: 'MySQL', type: 'database', description: 'ระบบจัดการฐานข้อมูล', descriptionEn: 'Database management system' },
-      { name: 'MySQL Workbench', type: 'tool', description: 'เครื่องมือจัดการ MySQL', descriptionEn: 'MySQL management tool' },
-      { name: 'phpMyAdmin', type: 'tool', description: 'เครื่องมือจัดการฐานข้อมูลผ่านเว็บ', descriptionEn: 'Web-based database management tool' }
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 3,
     duration: '15',
@@ -384,7 +383,9 @@ export const curriculum: CourseContent[] = [
     ],
     tools: [
       { name: 'GitHub', type: 'platform', description: 'แพลตฟอร์มควบคุมเวอร์ชั่นและ collaboration', descriptionEn: 'Version control and collaboration platform' },
-      { name: 'Git', type: 'tool', description: 'ระบบควบคุมเวอร์ชั่น', descriptionEn: 'Version control system' }
+      { name: 'Git', type: 'tool', description: 'ระบบควบคุมเวอร์ชั่น', descriptionEn: 'Version control system' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
@@ -429,7 +430,9 @@ export const curriculum: CourseContent[] = [
     ],
     tools: [
       { name: 'Docker', type: 'tool', description: 'เครื่องมือ containerization', descriptionEn: 'Containerization tool' },
-      { name: 'Docker Compose', type: 'tool', description: 'เครื่องมือจัดการ multi-container', descriptionEn: 'Multi-container management tool' }
+      { name: 'Docker Compose', type: 'tool', description: 'เครื่องมือจัดการ multi-container', descriptionEn: 'Multi-container management tool' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
@@ -474,7 +477,8 @@ export const curriculum: CourseContent[] = [
     ],
     tools: [
       { name: 'Playwright', type: 'tool', description: 'เครื่องมือทดสอบอัตโนมัติ', descriptionEn: 'Automated testing tool' },
-      { name: 'Visual Studio Code', type: 'tool', description: 'IDE สำหรับการเขียน Test Script', descriptionEn: 'IDE for writing Test Scripts' }
+      { name: 'Visual Studio Code', type: 'tool', description: 'IDE สำหรับการเขียน Test Script', descriptionEn: 'IDE for writing Test Scripts' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
@@ -519,7 +523,9 @@ export const curriculum: CourseContent[] = [
     ],
     tools: [
       { name: 'Postman', type: 'tool', description: 'เครื่องมือทดสอบ API', descriptionEn: 'API testing tool' },
-      { name: 'Newman', type: 'tool', description: 'Command-line runner สำหรับ Postman', descriptionEn: 'Command-line runner for Postman' }
+      { name: 'Newman', type: 'tool', description: 'Command-line runner สำหรับ Postman', descriptionEn: 'Command-line runner for Postman' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
@@ -610,7 +616,9 @@ export const curriculum: CourseContent[] = [
     ],
     tools: [
       { name: 'HTML', type: 'language', description: 'ภาษามาร์กอัปสำหรับเว็บ', descriptionEn: 'Markup language for web' },
-      { name: 'CSS', type: 'language', description: 'ภาษาจัดรูปแบบ', descriptionEn: 'Styling language' }
+      { name: 'CSS', type: 'language', description: 'ภาษาจัดรูปแบบ', descriptionEn: 'Styling language' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
@@ -654,7 +662,9 @@ export const curriculum: CourseContent[] = [
       'Performance Optimization'
     ],
     tools: [
-      { name: 'Tailwind CSS', type: 'framework', description: 'CSS framework สำหรับ utility-first', descriptionEn: 'CSS framework for utility-first' }
+      { name: 'Tailwind CSS', type: 'framework', description: 'CSS framework สำหรับ utility-first', descriptionEn: 'CSS framework for utility-first' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
@@ -699,7 +709,9 @@ export const curriculum: CourseContent[] = [
       'Modern JavaScript Development'
     ],
     tools: [
-      { name: 'JavaScript', type: 'language', description: 'ภาษาโปรแกรมมิ่งสำหรับเว็บ', descriptionEn: 'Programming language for web' }
+      { name: 'JavaScript', type: 'language', description: 'ภาษาโปรแกรมมิ่งสำหรับเว็บ', descriptionEn: 'Programming language for web' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
@@ -744,7 +756,9 @@ export const curriculum: CourseContent[] = [
       'Performance Optimization'
     ],
     tools: [
-      { name: 'React', type: 'framework', description: 'JavaScript library สำหรับ UI', descriptionEn: 'JavaScript library for UI' }
+      { name: 'React', type: 'framework', description: 'JavaScript library สำหรับ UI', descriptionEn: 'JavaScript library for UI' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
@@ -789,7 +803,9 @@ export const curriculum: CourseContent[] = [
       'Performance and SEO Optimization'
     ],
     tools: [
-      { name: 'Next.js', type: 'framework', description: 'React framework สำหรับ production', descriptionEn: 'React framework for production' }
+      { name: 'Next.js', type: 'framework', description: 'React framework สำหรับ production', descriptionEn: 'React framework for production' },
+      { name: 'Visual Studio Code', type: 'tool', description: 'โปรแกรมแก้ไขโค้ดที่ทันสมัย', descriptionEn: 'Modern code editor' },
+      { name: 'Qoder', type: 'tool', description: 'IDE สำหรับการพัฒนาเว็บและแอปพลิเคชัน', descriptionEn: 'IDE for web and application development' }
     ],
     credits: 1,
     duration: '4',
