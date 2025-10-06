@@ -3,43 +3,7 @@
 import React, { useState } from "react";
 import "./admin.css";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-// Mock data for courses
-const courses = [
-  {
-    id: "1",
-    name: "การพัฒนาเว็บด้วย React",
-    year: "ปี 2",
-    semester: "เทอม 1",
-    students: 45,
-    status: "active",
-    progress: 75,
-    instructor: "อ. อรรถวิท ชังคมานนท์",
-    lastUpdate: "2023-10-15"
-  },
-  {
-    id: "2",
-    name: "การจัดการฐานข้อมูล",
-    year: "ปี 1",
-    semester: "เทอม 2",
-    students: 38,
-    status: "active",
-    progress: 60,
-    instructor: "อ. อรรถวิท ชังคมานนท์",
-    lastUpdate: "2023-10-10"
-  },
-  {
-    id: "3",
-    name: "อัลกอริทึมและโครงสร้างข้อมูล",
-    year: "ปี 2",
-    semester: "เทอม 1",
-    students: 52,
-    status: "inactive",
-    progress: 0,
-    instructor: "ผศ.ดร. ปวีณ เขื่อนแก้ว",
-    lastUpdate: "2023-09-20"
-  }
-];
+import { curriculum } from "@/data/curriculum";
 
 // Mock data for users
 const users = [
@@ -99,7 +63,20 @@ const TabButton = ({ id, label, isActive, onClick }: TabButtonProps) => (
 
 const AdminPage = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  // Transform curriculum data to match the admin page format
+  const courses = curriculum.map((course, index) => ({
+    id: course.id,
+    name: language === 'th' ? course.title : course.titleEn,
+    year: language === 'th' ? `ปี ${course.year}` : `Year ${course.year}`,
+    semester: language === 'th' ? `เทอม ${course.semester}` : `Semester ${course.semester}`,
+    students: Math.floor(Math.random() * 100) + 20, // Random student count for demo
+    status: index % 3 === 0 ? "inactive" : "active", // Some courses inactive for demo
+    progress: Math.floor(Math.random() * 100), // Random progress for demo
+    instructor: "อ. อรรถวิท ชังคมานนท์",
+    lastUpdate: `2023-10-${String(index % 30 + 1).padStart(2, '0')}`
+  }));
 
   const renderDashboard = () => (
     <div className="fade-in">
